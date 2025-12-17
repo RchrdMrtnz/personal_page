@@ -1,0 +1,30 @@
+{
+    "Navigation": {
+        "home": "Home",
+        "work": "Work",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "Hero": {
+        "cta": "Let’s build your system",
+        "downloadResume": "Download Resume"
+    },
+    "Sections": {
+        "featuredWork": "Featured Work",
+        "experience": "Experience",
+        "metrics": "Metrics that Matter",
+        "playbook": "My Playbook",
+        "techStack": "Tech Stack"
+    },
+    "Contact": {
+        "title": "Let's Talk",
+        "subtitle": "Ready to automate and scale?",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Send Message"
+    },
+    "Footer": {
+        "rights": "All rights reserved."
+    }
+}

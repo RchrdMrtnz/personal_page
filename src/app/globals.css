@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  /* Nebula Palette - Base Colors */
+  --nebula-primary: #221A72;
+  --nebula-accent: #3D4DFF;
+  --nebula-ink: #0E0E10;
+  --nebula-surface: #1F1F23;
+  --nebula-cloud: #FFFFFF;
+
+  /* Semantic mappings - Enforcing Dark Mode / Nebula Theme */
+  --background: var(--nebula-ink);
+  --foreground: var(--nebula-cloud);
+
+  /* Font settings */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+}
+
+@theme inline {
+  /* Color System */
+  --color-nebula-primary: var(--nebula-primary);
+  --color-nebula-accent: var(--nebula-accent);
+  --color-nebula-ink: var(--nebula-ink);
+  --color-nebula-surface: var(--nebula-surface);
+  --color-nebula-cloud: var(--nebula-cloud);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Border Radius */
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lift: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+
+  /* Animations */
+  --animate-blink: blink 1s step-end infinite;
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nebula-surface);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nebula-accent);
+}
+
+/* Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,30 @@
+{
+    "Navigation": {
+        "home": "Inicio",
+        "work": "Proyectos",
+        "about": "Sobre mí",
+        "contact": "Contacto"
+    },
+    "Hero": {
+        "cta": "Hablemos de tu sistema",
+        "downloadResume": "Descargar CV"
+    },
+    "Sections": {
+        "featuredWork": "Proyectos Destacados",
+        "experience": "Experiencia",
+        "metrics": "Métricas Clave",
+        "playbook": "Mi Metodología",
+        "techStack": "Stack Tecnológico"
+    },
+    "Contact": {
+        "title": "Hablemos",
+        "subtitle": "¿Listo para automatizar y escalar?",
+        "name": "Nombre",
+        "email": "Email",
+        "message": "Mensaje",
+        "submit": "Enviar Mensaje"
+    },
+    "Footer": {
+        "rights": "Todos los derechos reservados."
+    }
+}
