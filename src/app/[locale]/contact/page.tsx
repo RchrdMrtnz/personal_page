@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Mail, Linkedin, Send, MessageSquare } from "lucide-react";
+import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default async function ContactPage({
     params
@@ -16,14 +17,12 @@ export default async function ContactPage({
 
     return (
         <div className="pt-20 sm:pt-28 pb-16 sm:pb-24 min-h-screen flex items-center relative overflow-hidden">
-            {/* Simplified static gradient background */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-nebula-accent/10 rounded-full blur-[150px] opacity-40" />
-            <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-nebula-primary/20 rounded-full blur-[120px] opacity-30" />
+            <NebulaBackground />
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
                 <div className="text-center mb-12 sm:mb-16">
-                    {/* Simplified badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nebula-accent/10 border border-nebula-accent/20 mb-6 sm:mb-8">
+                    {/* Consistent Availability Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-nebula-accent/10 border border-nebula-accent/20 mb-6 sm:mb-8 backdrop-blur-md">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-nebula-accent opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-nebula-accent"></span>
@@ -31,7 +30,6 @@ export default async function ContactPage({
                         <span className="text-sm font-medium text-nebula-accent">Available for opportunities</span>
                     </div>
 
-                    {/* Cleaner heading */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 font-display leading-tight">
                         {t("title")}
                     </h1>
@@ -40,28 +38,27 @@ export default async function ContactPage({
                     </p>
                 </div>
 
-                {/* Improved contact cards with better mobile layout */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     {/* Email Card */}
                     <a
                         href={siteConfig.profile.links.email}
                         className="group relative block"
                     >
-                        <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-nebula-surface/30 border border-nebula-surface/40 backdrop-blur-sm transition-all duration-300 hover:bg-nebula-surface/40 hover:border-nebula-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-nebula-accent/10">
-                            <div className="flex flex-col h-full">
-                                <div className="mb-4 sm:mb-6">
-                                    <div className="inline-flex p-3 sm:p-4 rounded-xl bg-nebula-accent/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
-                                        <Mail className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <Card className="h-full p-8 bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 hover:bg-nebula-ink/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)]">
+                            <div className="flex flex-col h-full items-center text-center">
+                                <div className="mb-6">
+                                    <div className="inline-flex p-4 rounded-2xl bg-white/5 border border-white/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
+                                        <Mail className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="text-xs sm:text-sm uppercase tracking-widest text-gray-500 mb-2 font-medium">Email</div>
-                                    <div className="text-sm sm:text-base text-white/90 font-medium break-all group-hover:text-white transition-colors">
+                                <div className="space-y-2">
+                                    <div className="text-xs uppercase tracking-widest text-gray-500 font-mono">Email</div>
+                                    <div className="text-lg text-white font-medium group-hover:text-nebula-accent transition-colors">
                                         rchrd.pdrz.mrtnz@gmail.com
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Card>
                     </a>
 
                     {/* LinkedIn Card */}
@@ -71,21 +68,21 @@ export default async function ContactPage({
                         rel="noopener noreferrer"
                         className="group relative block"
                     >
-                        <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-nebula-surface/30 border border-nebula-surface/40 backdrop-blur-sm transition-all duration-300 hover:bg-nebula-surface/40 hover:border-nebula-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-nebula-accent/10">
-                            <div className="flex flex-col h-full">
-                                <div className="mb-4 sm:mb-6">
-                                    <div className="inline-flex p-3 sm:p-4 rounded-xl bg-nebula-accent/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
-                                        <Linkedin className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <Card className="h-full p-8 bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 hover:bg-nebula-ink/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)]">
+                            <div className="flex flex-col h-full items-center text-center">
+                                <div className="mb-6">
+                                    <div className="inline-flex p-4 rounded-2xl bg-white/5 border border-white/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
+                                        <Linkedin className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="text-xs sm:text-sm uppercase tracking-widest text-gray-500 mb-2 font-medium">LinkedIn</div>
-                                    <div className="text-sm sm:text-base text-white/90 font-medium group-hover:text-white transition-colors">
+                                <div className="space-y-2">
+                                    <div className="text-xs uppercase tracking-widest text-gray-500 font-mono">LinkedIn</div>
+                                    <div className="text-lg text-white font-medium group-hover:text-nebula-accent transition-colors">
                                         in/rchrd-pdrz1993
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Card>
                     </a>
 
                     {/* Telegram Card */}
@@ -95,21 +92,21 @@ export default async function ContactPage({
                         rel="noopener noreferrer"
                         className="group relative block"
                     >
-                        <div className="relative h-full p-6 sm:p-8 rounded-2xl bg-nebula-surface/30 border border-nebula-surface/40 backdrop-blur-sm transition-all duration-300 hover:bg-nebula-surface/40 hover:border-nebula-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-nebula-accent/10">
-                            <div className="flex flex-col h-full">
-                                <div className="mb-4 sm:mb-6">
-                                    <div className="inline-flex p-3 sm:p-4 rounded-xl bg-nebula-accent/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
-                                        <Send className="w-6 h-6 sm:w-7 sm:h-7" />
+                        <Card className="h-full p-8 bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 hover:bg-nebula-ink/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)]">
+                            <div className="flex flex-col h-full items-center text-center">
+                                <div className="mb-6">
+                                    <div className="inline-flex p-4 rounded-2xl bg-white/5 border border-white/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
+                                        <Send className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="text-xs sm:text-sm uppercase tracking-widest text-gray-500 mb-2 font-medium">Telegram</div>
-                                    <div className="text-sm sm:text-base text-white/90 font-medium group-hover:text-white transition-colors">
+                                <div className="space-y-2">
+                                    <div className="text-xs uppercase tracking-widest text-gray-500 font-mono">Telegram</div>
+                                    <div className="text-lg text-white font-medium group-hover:text-nebula-accent transition-colors">
                                         Send a message
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Card>
                     </a>
                 </div>
             </div>

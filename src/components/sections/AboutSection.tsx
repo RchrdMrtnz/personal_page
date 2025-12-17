@@ -4,44 +4,70 @@ import { siteConfig } from "../../../content/site";
 import { motion } from "framer-motion";
 import { User, Target } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function AboutSection({ locale }: { locale: string }) {
     const about = siteConfig.about;
 
     return (
-        <section className="py-20 relative">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 relative overflow-hidden">
+            <NebulaBackground />
+
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    <Card className="bg-nebula-surface/5 border-nebula-surface/10 p-8 md:p-12">
+                    <Card className="bg-nebula-ink/30 backdrop-blur-xl border-white/10 p-8 md:p-12 relative overflow-hidden">
+                        {/* Decorative glow inside card */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/5 rounded-full blur-3xl -z-10" />
+
                         <div className="flex flex-col items-center text-center">
-                            <div className="inline-flex p-3 rounded-full bg-nebula-accent/10 text-nebula-accent mb-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-flex p-3 rounded-2xl bg-white/5 border border-white/10 text-nebula-accent mb-6 shadow-lg shadow-nebula-accent/10"
+                            >
                                 <User size={32} />
-                            </div>
+                            </motion.div>
 
-                            <h2 className="text-3xl font-bold text-white mb-6 font-display">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-3xl md:text-4xl font-bold text-white mb-6 font-display"
+                            >
                                 {locale === "en" ? about.title.en : about.title.es}
-                            </h2>
+                            </motion.h2>
 
-                            <p className="text-lg text-gray-300 mb-10 leading-relaxed max-w-3xl">
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="text-lg text-gray-300 mb-10 leading-relaxed max-w-3xl"
+                            >
                                 {locale === "en" ? about.bio.en : about.bio.es}
-                            </p>
+                            </motion.p>
 
-                            <div className="w-full border-t border-white/5 pt-8">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                                className="w-full border-t border-white/10 pt-8"
+                            >
                                 <div className="flex flex-col items-center">
-                                    <span className="text-nebula-accent font-mono text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
-                                        <Target size={16} />
+                                    <span className="text-nebula-accent font-mono text-sm uppercase tracking-wider mb-3 flex items-center gap-2 px-3 py-1 rounded-full bg-nebula-accent/10 border border-nebula-accent/20">
+                                        <Target size={14} />
                                         {locale === "en" ? "My Mission" : "Mi Misión"}
                                     </span>
-                                    <p className="text-xl font-medium text-white max-w-2xl italic">
+                                    <p className="text-xl md:text-2xl font-medium text-white max-w-2xl italic font-display">
                                         "{locale === "en" ? about.mission.en : about.mission.es}"
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </Card>
                 </motion.div>

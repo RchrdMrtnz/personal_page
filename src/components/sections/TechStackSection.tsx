@@ -2,9 +2,9 @@
 
 import { siteConfig } from "../../../content/site";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Code2, Layers, Cpu, Database } from "lucide-react";
+import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function TechStackSection({ locale }: { locale: string }) {
     const stack = siteConfig.techStack;
@@ -16,42 +16,72 @@ export default function TechStackSection({ locale }: { locale: string }) {
         { key: 'ai', icon: Database, data: stack.ai },
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
     return (
-        <section className="py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="py-20 relative overflow-hidden">
+            <NebulaBackground />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                >
                     {sections.map((section, index) => (
                         <motion.div
                             key={section.key}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
                         >
-                            <Card className="h-full bg-transparent border-nebula-surface/20">
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="p-2 bg-nebula-surface/50 rounded-lg text-nebula-accent">
-                                        <section.icon size={20} />
+                            <Card
+                                hoverEffect
+                                className="h-full bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] p-6"
+                            >
+                                <div className="flex justify-between items-start mb-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2 bg-white/5 rounded-lg text-nebula-accent ring-1 ring-white/10">
+                                            <section.icon size={20} />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-white font-display">
+                                            {locale === "en" ? section.data.title.en : section.data.title.es}
+                                        </h3>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white">
-                                        {locale === "en" ? section.data.title.en : section.data.title.es}
-                                    </h3>
+                                    <span className="text-xs font-mono text-gray-500 tracking-wider">
+                                        SYS_0{index + 1}
+                                    </span>
                                 </div>
-                                <div className="flex flex-wrap gap-2 block">
-                                    {section.data.items.map((item) => (
-                                        <Badge
+                                <div className="flex flex-wrap gap-2">
+                                    {section.data.items.map((item, i) => (
+                                        <motion.div
                                             key={item}
-                                            variant="secondary"
-                                            className="bg-nebula-surface/30 hover:bg-nebula-surface/50 text-gray-300 border-white/5"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: 0.1 * i }}
+                                            viewport={{ once: true }}
+                                            className="px-3 py-1.5 text-xs md:text-sm font-mono text-gray-300 bg-white/5 border border-white/10 rounded-full hover:border-nebula-accent/50 hover:bg-white/10 hover:text-white transition-colors cursor-default"
                                         >
                                             {item}
-                                        </Badge>
+                                        </motion.div>
                                     ))}
                                 </div>
                             </Card>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

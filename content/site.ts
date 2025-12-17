@@ -24,6 +24,8 @@ export const siteConfig = {
         },
     },
 
+    topSkills: ["TypeScript", "Next.js", "Python", "AWS", "RAG", "n8n"],
+
     services: [
         {
             icon: Bot,
