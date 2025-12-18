@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function AboutSection({ locale }: { locale: string }) {
-    const about = siteConfig.about;
+
 
     return (
         <section className="py-20 relative overflow-hidden">
@@ -40,7 +40,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                                 transition={{ delay: 0.3 }}
                                 className="text-3xl md:text-4xl font-bold text-white mb-6 font-display"
                             >
-                                {locale === "en" ? about.title.en : about.title.es}
+                                {locale === "en" ? "About Me" : "Sobre Mí"}
                             </motion.h2>
 
                             <motion.p
@@ -49,7 +49,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                                 transition={{ delay: 0.4 }}
                                 className="text-lg text-gray-300 mb-10 leading-relaxed max-w-3xl"
                             >
-                                {locale === "en" ? about.bio.en : about.bio.es}
+                                {locale === "en" ? siteConfig.profile.differentiator.en : siteConfig.profile.differentiator.es}
                             </motion.p>
 
                             <motion.div
@@ -61,10 +61,10 @@ export default function AboutSection({ locale }: { locale: string }) {
                                 <div className="flex flex-col items-center">
                                     <span className="text-nebula-accent font-mono text-sm uppercase tracking-wider mb-3 flex items-center gap-2 px-3 py-1 rounded-full bg-nebula-accent/10 border border-nebula-accent/20">
                                         <Target size={14} />
-                                        {locale === "en" ? "My Mission" : "Mi Misión"}
+                                        {locale === "en" ? "My Focus" : "Mi Enfoque"}
                                     </span>
                                     <p className="text-xl md:text-2xl font-medium text-white max-w-2xl italic font-display">
-                                        "{locale === "en" ? about.mission.en : about.mission.es}"
+                                        "{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}"
                                     </p>
                                 </div>
                             </motion.div>

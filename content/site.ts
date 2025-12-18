@@ -16,10 +16,10 @@ export const siteConfig = {
             github: "https://github.com/RchrdMrtnz",
             email: "mailto:rchrd.pdrz.mrtnz@gmail.com",
             medium: "https://medium.com/@rchrd.pdrz.mrtnz",
-            telegram: "https://t.me/placeholder",
+            telegram: "https://t.me/rchrd_am",
             resume: {
                 en: "/Richard-Pedraza-Resume.pdf",
-                es: "/Richard-Pedraza-Resume.pdf"
+                es: "/Richard-Pedraza-Resume.pdf",
             },
         },
     },
@@ -31,34 +31,34 @@ export const siteConfig = {
             icon: Bot,
             title: { en: "LLM Integrations", es: "Integraciones LLM" },
             desc: {
-                en: "Custom AI agents, RAG pipelines, and structured outputs for business logic.",
-                es: "Agentes de IA personalizados, pipelines RAG y salidas estructuradas para lógica de negocio."
-            }
+                en: "Custom AI agents, RAG pipelines, and structured outputs aligned with real business logic.",
+                es: "Agentes de IA personalizados, pipelines RAG y salidas estructuradas alineadas con lógica real de negocio.",
+            },
         },
         {
             icon: Workflow,
             title: { en: "Workflow Automation", es: "Automatización de Flujos" },
             desc: {
-                en: "End-to-end orchestration using n8n, Python scripts, and API connectors.",
-                es: "Orquestación de extremo a extremo usando n8n, scripts Python y conectores API."
-            }
+                en: "End-to-end automation replacing manual operations with resilient, scalable systems.",
+                es: "Automatización de extremo a extremo que reemplaza operaciones manuales por sistemas resilientes y escalables.",
+            },
         },
         {
             icon: Database,
             title: { en: "Data Pipelines", es: "Pipelines de Datos" },
             desc: {
-                en: "High-throughput ingestion, cleaning, and processing systems.",
-                es: "Sistemas de ingesta, limpieza y procesamiento de alto rendimiento."
-            }
+                en: "Reliable ingestion, processing, and enrichment pipelines built for operational scale.",
+                es: "Pipelines confiables de ingesta, procesamiento y enriquecimiento diseñados para escalar operaciones.",
+            },
         },
         {
             icon: Cpu,
             title: { en: "Backend Architecture", es: "Arquitectura Backend" },
             desc: {
-                en: "Scalable microservices and serverless functions (AWS Lambda, FastAPI).",
-                es: "Microservicios escalables y funciones serverless (AWS Lambda, FastAPI)."
-            }
-        }
+                en: "System architecture designed for performance, maintainability, and controlled technical debt.",
+                es: "Arquitectura de sistemas diseñada para rendimiento, mantenibilidad y deuda técnica controlada.",
+            },
+        },
     ],
 
     heroMetrics: [
@@ -90,180 +90,142 @@ export const siteConfig = {
         {
             id: "valuation-engine",
             value: "<2m",
-            label: { en: "Property valuation time", es: "Tiempo de valoración" },
-            detail: { en: "Reduced from 3–4 days", es: "Reducido de 3–4 días" },
+            label: { en: "Decision turnaround time", es: "Tiempo de toma de decisión" },
+            detail: { en: "Reduced from days to minutes", es: "Reducido de días a minutos" },
         },
     ],
 
     experience: [
         {
-            company: "DISGLOBAL",
-            role: { en: "Backend Developer", es: "Backend Developer" },
-            period: "Aug 2025 – Present",
+            company: "Technology & Automation Projects",
+            role: { en: "Full-Stack & AI Engineer", es: "Ingeniero Full-Stack e IA" },
+            period: "2023 – Present",
             description: {
-                en: "Build/optimize APIs; security; deployment; DB performance.",
-                es: "Construcción/optimización de APIs; seguridad; despliegue; rendimiento de BD.",
+                en: "Designed and delivered end-to-end software systems focused on automation, AI integration, and operational efficiency across multiple business domains.",
+                es: "Diseñé y desarrollé sistemas de software de punta a punta enfocados en automatización, integración de IA y eficiencia operativa en múltiples dominios de negocio.",
             },
         },
         {
-            company: "Real Estate Tech",
-            role: { en: "Full-stack Developer", es: "Desarrollador Full-stack" },
-            period: "Sep 2023 – Present",
-            description: {
-                en: "Valuation system; Next.js dashboard; scraping + AI analysis; automation.",
-                es: "Sistema de valoración; dashboard Next.js; scraping + análisis IA; automatización.",
-            },
-        },
-        {
-            company: "Crazy Imagine Software",
+            company: "Automation & AI Consulting",
             role: { en: "Automation Engineer", es: "Ingeniero de Automatización" },
-            period: "May 2025 – Jun 2025",
+            period: "2024 – Present",
             description: {
-                en: "n8n + AI pipelines; system integrations.",
-                es: "Pipelines n8n + IA; integraciones de sistemas.",
+                en: "Built automation infrastructures combining Python, n8n, and AI services to replace manual workflows and enable scalable operations.",
+                es: "Construí infraestructuras de automatización combinando Python, n8n y servicios de IA para reemplazar flujos manuales y habilitar operaciones escalables.",
             },
         },
         {
-            company: "Universidad ISEP",
-            role: { en: "Integration & Automation Specialist", es: "Especialista en Integración y Automatización" },
-            period: "Feb 2025 – May 2025",
+            company: "AI Decision Systems",
+            role: { en: "AI Systems Developer", es: "Desarrollador de Sistemas de IA" },
+            period: "2025",
             description: {
-                en: "Workflow optimization.",
-                es: "Optimización de flujos de trabajo.",
+                en: "Developed configurable AI-based decision systems for screening, ranking, and automated communication, adaptable to different industries and business rules.",
+                es: "Desarrollé sistemas de decisión con IA configurables para filtrado, ranking y comunicación automatizada, adaptables a distintas industrias y reglas de negocio.",
             },
         },
     ],
 
     caseStudies: [
         {
-            id: "valuation-engine",
-            title: { en: "Property Valuation Engine", es: "Motor de Valoración Inmobiliaria" },
+            id: "academic-content-ai",
+            title: { en: "Automated Academic Content Generation", es: "Generación Automatizada de Contenido Académico" },
             description: {
-                en: "Automated property valuation system reducing turnaround from days to minutes.",
-                es: "Sistema automatizado de valoración reduciendo el tiempo de días a minutos.",
+                en: "AI-driven pipeline that generates, reviews, and updates academic content using GPT and n8n with semantic validation and version control.",
+                es: "Pipeline impulsado por IA que genera, revisa y actualiza contenido académico usando GPT y n8n con validación semántica y control de versiones.",
             },
-            tags: ["Python", "Custom Models", "Automation"],
-            stats: { en: "3-4 days → <2 min", es: "3-4 días → <2 min" },
-            image: "/projects/valuation.jpg"
+            tags: ["GPT", "n8n", "Content Automation"],
+            stats: { en: "Content cycles reduced from weeks to days", es: "Ciclos de contenido reducidos de semanas a días" },
+            image: "/projects/academic.jpg",
         },
         {
-            id: "data-pipeline",
-            title: { en: "High-Scale Data Ingestion", es: "Ingesta de Datos a Gran Escala" },
+            id: "voice-ai-platform",
+            title: { en: "Real-Time Voice AI Platform", es: "Plataforma de IA por Voz en Tiempo Real" },
             description: {
-                en: "Scaled ingestion to 25,000+ records/week with 99.3% accuracy.",
-                es: "Escalado a 25,000+ registros/semana con 99.3% de precisión.",
+                en: "Voice-based AI system using WebRTC, AssemblyAI, OpenAI and ElevenLabs for live transcription, contextual responses, and automated summaries.",
+                es: "Sistema de IA por voz usando WebRTC, AssemblyAI, OpenAI y ElevenLabs para transcripción en vivo, respuestas contextuales y resúmenes automáticos.",
             },
-            tags: ["Async Pipelines", "Data Engineering", "Accuracy"],
-            stats: { en: "99.3% accuracy", es: "99.3% precisión" },
-            image: "/projects/pipeline.jpg"
+            tags: ["WebRTC", "Streaming AI", "Voice Agents"],
+            stats: { en: "Automated inbound call handling", es: "Automatización de llamadas entrantes" },
+            image: "/projects/voice-ai.jpg",
         },
         {
-            id: "ops-automation",
-            title: { en: "Operational Automation", es: "Automatización Operativa" },
+            id: "recruitment-ai-engine",
+            title: { en: "AI-Based Recruitment Decision Engine", es: "Motor de Decisión para Reclutamiento con IA" },
             description: {
-                en: "Digitized and automated 100% of operational processes enabling real-time visibility.",
-                es: "Digitalización y automatización del 100% de procesos operativos.",
+                en: "Flexible AI system to filter, rank, and follow up with candidates using LLMs and configurable business rules, adaptable to multiple industries.",
+                es: "Sistema de IA flexible para filtrar, rankear y dar seguimiento a candidatos usando LLMs y reglas de negocio configurables, adaptable a múltiples industrias.",
             },
-            tags: ["n8n", "Workflows", "Real-time"],
-            stats: { en: "100% digitized", es: "100% digitalizado" },
-            image: "/projects/automation.jpg"
+            tags: ["LLMs", "Decision Systems", "Automation"],
+            stats: { en: "Up to 70% reduction in manual screening effort", es: "Hasta 70% de reducción en esfuerzo de preselección manual" },
+            image: "/projects/recruitment.jpg",
+        },
+        {
+            id: "ai-video-automation",
+            title: { en: "Automated AI Video Production", es: "Producción Automatizada de Video con IA" },
+            description: {
+                en: "End-to-end automated video creation pipeline combining image generation, AI voice synthesis, and automated composition tools.",
+                es: "Pipeline de creación de video totalmente automatizado combinando generación de imágenes, síntesis de voz con IA y herramientas de composición automática.",
+            },
+            tags: ["Generative AI", "Video Automation"],
+            stats: { en: "Zero manual video editing", es: "Edición manual eliminada" },
+            image: "/projects/video.jpg",
         },
     ],
 
-    about: {
-        title: { en: "About Me", es: "Sobre Mí" },
-        bio: {
-            en: "I am a Full-Stack Engineer specializing in AI and Automation. My focus is on building systems that not only solve immediate technical challenges but also create long-term business value. I leverage the latest in Large Language Models and cloud architecture to deliver scalable solutions.",
-            es: "Soy un Ingeniero Full-Stack especializado en IA y Automatización. Mi enfoque es construir sistemas que no solo resuelven desafíos técnicos inmediatos, sino que también crean valor comercial a largo plazo. Aprovecho lo último en Grandes Modelos de Lenguaje y arquitectura en la nube para entregar soluciones escalables."
+    consulting: {
+        title: { en: "AI Consulting & System Design", es: "Consultoría e Integración de IA" },
+        pitch: {
+            en: "I help companies integrate AI in a practical, reliable, and business-aligned way—focused on operational impact, not experimentation.",
+            es: "Ayudo a empresas a integrar IA de forma práctica, confiable y alineada al negocio, enfocada en impacto operativo real y no en experimentación.",
         },
-        mission: {
-            en: "To democratize access to advanced AI automation for forward-thinking businesses.",
-            es: "Democratizar el acceso a la automatización avanzada con IA para empresas con visión de futuro."
-        }
-    },
-
-    methodology: {
-        title: { en: "My Approach", es: "Mi Enfoque" },
-        steps: [
-            {
-                title: { en: "Discovery", es: "Descubrimiento" },
-                desc: { en: "Understanding the core business problem, not just the symptoms.", es: "Entender el problema central del negocio, no solo los síntomas." }
-            },
-            {
-                title: { en: "Architecture", es: "Arquitectura" },
-                desc: { en: "Designing a robust, scalable system blueprint.", es: "Diseñar un plano de sistema robusto y escalable." }
-            },
-            {
-                title: { en: "Implementation", es: "Implementación" },
-                desc: { en: "Agile development with continuous feedback loops.", es: "Desarrollo ágil con ciclos de retroalimentación continua." }
-            },
-            {
-                title: { en: "Optimization", es: "Optimización" },
-                desc: { en: "Data-driven refinement for maximum efficiency.", es: "Refinamiento basado en datos para máxima eficiencia." }
-            }
-        ]
-    },
-
-    techStack: {
-        languages: {
-            title: { en: "Languages", es: "Lenguajes" },
-            items: ["TypeScript", "Python", "SQL", "JavaScript"]
+        services: [
+            { en: "AI opportunity assessment and feasibility analysis", es: "Evaluación de oportunidades de IA y viabilidad técnica" },
+            { en: "Design of AI-enabled decision and automation systems", es: "Diseño de sistemas de decisión y automatización con IA" },
+            { en: "LLM, workflow and system integration", es: "Integración de LLMs, flujos y sistemas existentes" },
+            { en: "Scalability, cost control and maintainability guidance", es: "Acompañamiento en escalabilidad, control de costos y mantenibilidad" },
+        ],
+        outcome: {
+            en: "Clear technical roadmap and AI systems ready to operate and scale.",
+            es: "Hoja de ruta técnica clara y sistemas de IA listos para operar y escalar.",
         },
-        frameworks: {
-            title: { en: "Frameworks & Libraries", es: "Frameworks y Librerías" },
-            items: ["Next.js", "React", "FastAPI", "Tailwind CSS", "Node.js"]
-        },
-        tools: {
-            title: { en: "Tools & Platforms", es: "Herramientas y Plataformas" },
-            items: ["n8n", "Docker", "AWS", "Git", "Vercel", "Supabase"]
-        },
-        ai: {
-            title: { en: "AI & Data", es: "IA y Datos" },
-            items: ["OpenAI API", "LangChain", "Hugging Face", "Vector Databases", "RAG"]
-        }
-    },
-
-    cta: {
-        ready: { en: "Ready to scale your operations?", es: "¿Listo para escalar sus operaciones?" },
-        discussion: { en: "Let's discuss how AI can transform your business.", es: "Hablemos de cómo la IA puede transformar su negocio." },
-        action: { en: "Book a Discovery Call", es: "Agendar Llamada de Descubrimiento" }
+        cta: { en: "Explore AI Consulting", es: "Explorar Consultoría en IA" },
     },
 
     problems: {
         title: { en: "Common Business Problems", es: "Problemas Comunes de Negocio" },
         items: [
-            { en: "Manual processes that no longer scale with business growth.", es: "Procesos manuales que ya no escalan con el crecimiento del negocio." },
-            { en: "Disconnected systems that prevent real-time operational visibility.", es: "Sistemas desconectados que impiden la visibilidad operativa en tiempo real." },
-            { en: "Data scattered across tools without decision intelligence.", es: "Datos dispersos sin inteligencia para la toma de decisiones." },
+            { en: "Manual processes that no longer scale.", es: "Procesos manuales que ya no escalan." },
+            { en: "Disconnected systems without operational visibility.", es: "Sistemas desconectados sin visibilidad operativa." },
+            { en: "Data without actionable intelligence.", es: "Datos sin inteligencia accionable." },
             { en: "Operational dependency on key individuals.", es: "Dependencia operativa de personas clave." },
-            { en: "Slow execution caused by repetitive human tasks.", es: "Ejecución lenta por tareas humanas repetitivas." }
-        ]
+            { en: "Slow execution caused by repetitive tasks.", es: "Ejecución lenta por tareas repetitivas." },
+        ],
     },
 
     entryOffer: {
         title: { en: "How We Start", es: "Cómo Empezamos" },
         description: {
-            en: "A focused technical discovery to identify automation opportunities, bottlenecks, and high-impact quick wins.",
-            es: "Un diagnóstico técnico enfocado para identificar oportunidades de automatización, cuellos de botella y quick wins de alto impacto."
+            en: "Focused technical discovery to identify automation opportunities and high-impact quick wins.",
+            es: "Diagnóstico técnico enfocado para identificar oportunidades de automatización y quick wins de alto impacto.",
         },
         deliverable: {
-            en: "You receive a prioritized automation roadmap with measurable impact.",
-            es: "Recibes una hoja de ruta priorizada de automatización con impacto medible."
-        }
+            en: "A prioritized automation roadmap with measurable impact.",
+            es: "Hoja de ruta de automatización priorizada con impacto medible.",
+        },
     },
 
     trust: {
         documentation: {
-            en: "All systems are delivered with technical documentation and clear operational guidelines.",
-            es: "Todos los sistemas se entregan con documentación técnica y lineamientos claros de operación."
+            en: "All systems are delivered with clear technical documentation.",
+            es: "Todos los sistemas se entregan con documentación técnica clara.",
         },
         maintainability: {
-            en: "Built with long-term maintainability and low operational risk in mind.",
-            es: "Construidos con mantenibilidad a largo plazo y bajo riesgo operativo en mente."
+            en: "Built for long-term maintainability and low operational risk.",
+            es: "Construidos para mantenibilidad a largo plazo y bajo riesgo operativo.",
         },
         handoff: {
-            en: "Seamless knowledge transfer to internal technical teams.",
-            es: "Transferencia de conocimiento fluida hacia equipos técnicos internos."
-        }
-    }
+            en: "Structured knowledge transfer to internal teams.",
+            es: "Transferencia de conocimiento estructurada a equipos internos.",
+        },
+    },
 };

@@ -9,7 +9,7 @@ import { ArrowRight, CheckCheck, ShieldCheck } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function OfferSection({ locale }: { locale: string }) {
-    const cta = siteConfig.cta;
+
     const offer = siteConfig.entryOffer;
     const trust = siteConfig.trust;
 
@@ -47,17 +47,17 @@ export default function OfferSection({ locale }: { locale: string }) {
                             </div>
                             <div className="flex flex-col gap-4 border-l border-white/10 pl-0 md:pl-8 md:border-l-2">
                                 <h4 className="text-xl font-bold text-white font-display">
-                                    {locale === "en" ? cta.ready.en : cta.ready.es}
+                                    {locale === "en" ? "Ready to scale your operations?" : "¿Listo para escalar sus operaciones?"}
                                 </h4>
                                 <p className="text-sm text-gray-400 mb-2">
-                                    {locale === "en" ? cta.discussion.en : cta.discussion.es}
+                                    {locale === "en" ? "Let's discuss how AI can transform your business." : "Hablemos de cómo la IA puede transformar su negocio."}
                                 </p>
                                 <Link href="/contact">
                                     <Button size="lg" className="w-full group relative overflow-hidden border-none text-white shadow-lg shadow-nebula-accent/20 hover:shadow-nebula-accent/40 transition-shadow duration-300">
                                         <span className="absolute inset-0 bg-gradient-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                                         <span className="absolute inset-0 bg-nebula-accent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
                                         <span className="relative z-10 flex items-center justify-center">
-                                            {locale === "en" ? cta.action.en : cta.action.es}
+                                            {locale === "en" ? siteConfig.consulting.cta.en : siteConfig.consulting.cta.es}
                                             <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                                         </span>
                                     </Button>

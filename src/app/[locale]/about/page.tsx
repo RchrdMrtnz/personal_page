@@ -37,17 +37,17 @@ export default async function AboutPage({
                     <div className="prose prose-invert max-w-none">
                         <p className="text-xl text-gray-300 leading-relaxed font-light">
                             {locale === "en"
-                                ? siteConfig.about.bio.en
-                                : siteConfig.about.bio.es}
+                                ? siteConfig.profile.differentiator.en
+                                : siteConfig.profile.differentiator.es}
                         </p>
 
                         <div className="mt-8 border-t border-white/10 pt-8">
                             <span className="text-nebula-accent font-mono text-sm uppercase tracking-wider mb-4 flex items-center gap-2 px-3 py-1 rounded-full bg-nebula-accent/10 border border-nebula-accent/20 w-fit">
                                 <Target size={14} />
-                                {locale === "en" ? "My Mission" : "Mi Misión"}
+                                {locale === "en" ? "My Focus" : "Mi Enfoque"}
                             </span>
                             <p className="text-lg text-white font-medium italic pl-4 border-l-2 border-nebula-accent/50">
-                                "{locale === "en" ? siteConfig.about.mission.en : siteConfig.about.mission.es}"
+                                "{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}"
                             </p>
                         </div>
                     </div>
