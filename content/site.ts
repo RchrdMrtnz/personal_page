@@ -18,8 +18,8 @@ export const siteConfig = {
             medium: "https://medium.com/@rchrd.pdrz.mrtnz",
             telegram: "https://t.me/rchrd_am",
             resume: {
-                en: "/Richard-Pedraza-Resume.pdf",
-                es: "/Richard-Pedraza-Resume.pdf",
+                en: "https://github.com/RchrdMrtnz/personal_page/blob/main/CV/RICHARD-PEDRAZA-EN.pdf",
+                es: "https://github.com/RchrdMrtnz/personal_page/blob/main/CV/RICHARD-PEDRAZA-ES.pdf",
             },
         },
     },
