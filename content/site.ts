@@ -135,7 +135,7 @@ export const siteConfig = {
             },
             tags: ["GPT", "n8n", "Content Automation"],
             stats: { en: "Content cycles reduced from weeks to days", es: "Ciclos de contenido reducidos de semanas a días" },
-            image: "/projects/academic.jpg",
+            image: "/projects/academic.png",
         },
         {
             id: "voice-ai-platform",
@@ -146,7 +146,7 @@ export const siteConfig = {
             },
             tags: ["WebRTC", "Streaming AI", "Voice Agents"],
             stats: { en: "Automated inbound call handling", es: "Automatización de llamadas entrantes" },
-            image: "/projects/voice-ai.jpg",
+            image: "/projects/voice-ai.png",
         },
         {
             id: "recruitment-ai-engine",
@@ -157,7 +157,7 @@ export const siteConfig = {
             },
             tags: ["LLMs", "Decision Systems", "Automation"],
             stats: { en: "Up to 70% reduction in manual screening effort", es: "Hasta 70% de reducción en esfuerzo de preselección manual" },
-            image: "/projects/recruitment.jpg",
+            image: "/projects/recruitment.png",
         },
         {
             id: "ai-video-automation",
@@ -168,7 +168,7 @@ export const siteConfig = {
             },
             tags: ["Generative AI", "Video Automation"],
             stats: { en: "Zero manual video editing", es: "Edición manual eliminada" },
-            image: "/projects/video.jpg",
+            image: "/projects/video.png",
         },
     ],
 

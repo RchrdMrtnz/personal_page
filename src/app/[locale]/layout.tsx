@@ -14,6 +14,9 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-displ
 export const metadata: Metadata = {
   title: "Richard Pedraza | Full-Stack Developer & Automation Engineer",
   description: "Portfolio of Richard Pedraza - AI-enabled systems that scale and deliver ROI.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default async function RootLayout({
