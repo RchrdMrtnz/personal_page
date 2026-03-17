@@ -36,7 +36,7 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                         <Link href="/" className="text-xl font-bold text-white tracking-tight font-display">
                             RP<span className="text-nebula-accent">.</span>
                         </Link>
@@ -59,8 +59,12 @@ export default function Navbar() {
 
                     <div className="md:hidden">
                         <button
+                            type="button"
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none"
+                            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                            aria-expanded={isOpen}
+                            aria-controls="mobile-menu"
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nebula-accent"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -70,7 +74,7 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             {isOpen && (
-                <div className="md:hidden bg-nebula-ink border-b border-nebula-surface/10">
+                <div id="mobile-menu" className="md:hidden bg-nebula-ink border-b border-nebula-surface/10">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <Link

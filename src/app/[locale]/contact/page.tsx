@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { siteConfig } from "../../../../content/site";
 import { Card } from "@/components/ui/Card";
-import { Mail, Linkedin, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 import { ConsultingSection } from "@/components/sections/ConsultingSection";
 
@@ -70,7 +70,11 @@ export default async function ContactPage({
                             <div className="flex flex-col h-full items-center text-center">
                                 <div className="mb-6">
                                     <div className="inline-flex p-4 rounded-2xl bg-white/5 border border-white/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
-                                        <Linkedin className="w-8 h-8" />
+                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8" aria-hidden="true">
+                                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                            <rect width="4" height="12" x="2" y="9"/>
+                                            <circle cx="4" cy="4" r="2"/>
+                                        </svg>
                                     </div>
                                 </div>
                                 <div className="space-y-2">

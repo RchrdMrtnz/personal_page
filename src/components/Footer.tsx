@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { siteConfig } from "../../content/site";
-import { Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Footer() {
     const t = useTranslations("Footer");
@@ -25,9 +25,14 @@ export default function Footer() {
                             href={siteConfig.profile.links.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="LinkedIn profile"
                             className="text-gray-400 hover:text-nebula-accent transition-colors"
                         >
-                            <Linkedin size={20} />
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
                         </a>
                         <a
                             href={siteConfig.profile.links.medium}
@@ -48,6 +53,7 @@ export default function Footer() {
                         </a>
                         <a
                             href={siteConfig.profile.links.email}
+                            aria-label="Send email"
                             className="text-gray-400 hover:text-nebula-accent transition-colors"
                         >
                             <Mail size={20} />
