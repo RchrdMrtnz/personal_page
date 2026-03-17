@@ -1,14 +1,13 @@
 import { siteConfig } from "../../../../content/site";
 import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { ArrowUpRight, CheckCircle2, Layers, Zap } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default async function WorkPage({
     params
 }: {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
     const t = await getTranslations("Sections");
@@ -25,7 +24,7 @@ export default async function WorkPage({
                     <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
                         Selected case studies demonstrating high-impact automation and system architecture.
                     </p>
-                    <div className="w-20 h-1 bg-gradient-to-r from-nebula-accent to-purple-500 rounded-full mt-8" />
+                    <div className="w-20 h-1 bg-linear-to-r from-nebula-accent to-purple-500 rounded-full mt-8" />
                 </div>
 
                 <div className="grid grid-cols-1 gap-12">
@@ -36,7 +35,7 @@ export default async function WorkPage({
                         >
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                                 {/* Left: Visual/Header */}
-                                <div className="lg:col-span-4 bg-gradient-to-br from-nebula-primary/20 to-nebula-ink/50 p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden">
+                                <div className="lg:col-span-4 bg-linear-to-br from-nebula-primary/20 to-nebula-ink/50 p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
 
                                     <div className="relative z-10">

@@ -64,7 +64,7 @@ export default function Outcomes({ locale }: { locale: string }) {
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
                             {t("metrics")}
                         </h2>
-                        <div className="w-20 h-1 bg-gradient-to-r from-nebula-accent to-purple-500 mx-auto rounded-full" />
+                        <div className="w-20 h-1 bg-linear-to-r from-nebula-accent to-purple-500 mx-auto rounded-full" />
                     </motion.div>
                 </div>
 
@@ -75,7 +75,7 @@ export default function Outcomes({ locale }: { locale: string }) {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
                 >
-                    {siteConfig.metrics.map((metric, index) => (
+                    {siteConfig.metrics.map((metric) => (
                         <motion.div
                             key={metric.id}
                             variants={{

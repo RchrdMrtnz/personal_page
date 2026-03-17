@@ -1,14 +1,13 @@
 import { siteConfig } from "../../../../content/site";
 import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { GitCommit, Terminal, User, Target, Briefcase } from "lucide-react";
+import { Terminal, User, Target, Briefcase } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default async function AboutPage({
     params
 }: {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
     const t = await getTranslations("Sections");
@@ -47,7 +46,7 @@ export default async function AboutPage({
                                 {locale === "en" ? "My Focus" : "Mi Enfoque"}
                             </span>
                             <p className="text-lg text-white font-medium italic pl-4 border-l-2 border-nebula-accent/50">
-                                "{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}"
+                                &ldquo;{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}&rdquo;
                             </p>
                         </div>
                     </div>

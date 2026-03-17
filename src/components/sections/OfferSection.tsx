@@ -27,7 +27,7 @@ export default function OfferSection({ locale }: { locale: string }) {
                     viewport={{ once: true }}
                     className="mb-16"
                 >
-                    <Card className="bg-nebula-ink/30 backdrop-blur-xl border-white/10 overflow-hidden relative border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]">
+                    <Card className="bg-nebula-ink/30 backdrop-blur-xl overflow-hidden relative border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)]">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8 md:p-12 relative z-10">
@@ -54,7 +54,7 @@ export default function OfferSection({ locale }: { locale: string }) {
                                 </p>
                                 <Link href="/contact">
                                     <Button size="lg" className="w-full group relative overflow-hidden border-none text-white shadow-lg shadow-nebula-accent/20 hover:shadow-nebula-accent/40 transition-shadow duration-300">
-                                        <span className="absolute inset-0 bg-gradient-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                                        <span className="absolute inset-0 bg-linear-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                                         <span className="absolute inset-0 bg-nebula-accent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
                                         <span className="relative z-10 flex items-center justify-center">
                                             {locale === "en" ? siteConfig.consulting.cta.en : siteConfig.consulting.cta.es}

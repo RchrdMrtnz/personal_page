@@ -54,7 +54,7 @@ export function ConsultingSection({ locale }: ConsultingSectionProps) {
                             <div className="grid gap-4">
                                 {content.services.map((service, index) => (
                                     <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors">
-                                        <div className="mt-1 min-w-[20px]">
+                                        <div className="mt-1 min-w-5">
                                             <CheckCircle className="w-5 h-5 text-nebula-accent" />
                                         </div>
                                         <span className="text-gray-200">{service[lang]}</span>
@@ -62,13 +62,13 @@ export function ConsultingSection({ locale }: ConsultingSectionProps) {
                                 ))}
                             </div>
 
-                            <div className="p-6 rounded-2xl bg-gradient-to-r from-nebula-primary/10 to-transparent border border-nebula-primary/20">
+                            <div className="p-6 rounded-2xl bg-linear-to-r from-nebula-primary/10 to-transparent border border-nebula-primary/20">
                                 <div className="flex items-center gap-3 mb-2 text-nebula-primary font-semibold">
                                     <BrainCircuit className="w-5 h-5" />
                                     <span>Expected Outcome</span>
                                 </div>
                                 <p className="text-gray-300 italic">
-                                    "{content.outcome[lang]}"
+                                    &ldquo;{content.outcome[lang]}&rdquo;
                                 </p>
                             </div>
                         </div>

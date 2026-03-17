@@ -29,7 +29,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 
@@ -41,12 +41,12 @@ export default async function RootLayout({
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <body className="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased selection:bg-nebula-accent/30 selection:text-nebula-accent relative" suppressHydrationWarning>
         {/* Global Background Grid */}
-        <div className="fixed inset-0 -z-50 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]">
+        <div className="fixed inset-0 -z-50 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[24px_24px]">
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-nebula-primary/20 opacity-20 blur-[100px]" />
         </div>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main className="flex-grow">
+          <main className="grow">
             {children}
           </main>
           <Footer />

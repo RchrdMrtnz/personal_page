@@ -64,7 +64,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                                         {locale === "en" ? "My Focus" : "Mi Enfoque"}
                                     </span>
                                     <p className="text-xl md:text-2xl font-medium text-white max-w-2xl italic font-display">
-                                        "{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}"
+                                        &ldquo;{locale === "en" ? siteConfig.consulting.pitch.en : siteConfig.consulting.pitch.es}&rdquo;
                                     </p>
                                 </div>
                             </motion.div>

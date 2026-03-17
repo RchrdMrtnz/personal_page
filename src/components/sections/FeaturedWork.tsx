@@ -5,8 +5,8 @@ import { siteConfig } from "../../../content/site";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
@@ -39,7 +39,7 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
                             {t("featuredWork")}
                         </h2>
-                        <div className="w-20 h-1 bg-gradient-to-r from-nebula-accent to-purple-500 rounded-full" />
+                        <div className="w-20 h-1 bg-linear-to-r from-nebula-accent to-purple-500 rounded-full" />
                     </motion.div>
                     <Link
                         href="/work"
@@ -66,10 +66,12 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                         >
                             <Card hoverEffect className="h-full flex flex-col bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] p-0 overflow-hidden group">
                                 <div className="aspect-video relative overflow-hidden bg-nebula-ink">
-                                    <img
-                                        src={project.image || "/api/placeholder/400/320"}
+                                    <Image
+                                        src={project.image}
                                         alt={locale === "en" ? project.title.en : project.title.es}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
                                     <div className="absolute inset-0 bg-nebula-primary/20 group-hover:bg-transparent transition-colors duration-500" />
 
@@ -89,7 +91,7 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                                     </p>
 
                                     <div className="flex flex-wrap gap-2 mb-6">
-                                        {project.tags.slice(0, 3).map((tag, i) => (
+                                        {project.tags.slice(0, 3).map((tag) => (
                                             <div
                                                 key={tag}
                                                 className="px-2 py-1 text-[10px] font-mono text-gray-300 bg-white/5 border border-white/10 rounded hover:border-nebula-accent/50 hover:bg-white/10 hover:text-white transition-colors cursor-default"

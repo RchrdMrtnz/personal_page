@@ -1,17 +1,14 @@
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { siteConfig } from "../../../../content/site";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { Mail, Linkedin, Send, MessageSquare } from "lucide-react";
+import { Mail, Linkedin, Send } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 import { ConsultingSection } from "@/components/sections/ConsultingSection";
 
 export default async function ContactPage({
     params
 }: {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
     const t = await getTranslations("Contact");

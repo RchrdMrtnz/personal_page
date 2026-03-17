@@ -174,7 +174,7 @@ export default function Hero({ locale }: { locale: string }) {
                         >
                             <Link href="/contact" className="w-full sm:w-auto">
                                 <Button size="lg" className="relative w-full sm:w-auto overflow-hidden group border-none text-white shadow-lg shadow-nebula-accent/20 hover:shadow-nebula-accent/40 transition-shadow duration-300">
-                                    <span className="absolute inset-0 bg-gradient-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                                    <span className="absolute inset-0 bg-linear-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                                     <span className="relative z-10 flex items-center justify-center">
                                         {t("cta")}
                                         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -236,8 +236,16 @@ export default function Hero({ locale }: { locale: string }) {
     );
 }
 
+interface HeroMetric {
+    label: string;
+    value: string;
+    icon: React.ElementType;
+    color: string;
+    percentage: number;
+}
+
 // Separated component for performance optimization and clean code
-function MetricCard({ metric, index }: { metric: any, index: number }) {
+function MetricCard({ metric, index }: { metric: HeroMetric; index: number }) {
     return (
         <motion.div
             initial={{ y: 0 }}
