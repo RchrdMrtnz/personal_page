@@ -13,7 +13,7 @@ export function NebulaBackground({ className = "absolute inset-0" }: NebulaBackg
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+                    backgroundImage: "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
                     backgroundSize: "64px 64px",
                     maskImage: "radial-gradient(ellipse at center, black 50%, transparent 100%)",
                     WebkitMaskImage: "radial-gradient(ellipse at center, black 50%, transparent 100%)"
@@ -31,7 +31,7 @@ export function NebulaBackground({ className = "absolute inset-0" }: NebulaBackg
                     repeat: Infinity,
                     ease: "linear"
                 }}
-                className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-nebula-accent/10 blur-3xl rounded-full"
+                className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-nebula-accent/5 dark:bg-nebula-accent/10 blur-3xl rounded-full"
             />
             <motion.div
                 animate={{
@@ -43,7 +43,7 @@ export function NebulaBackground({ className = "absolute inset-0" }: NebulaBackg
                     repeat: Infinity,
                     ease: "linear"
                 }}
-                className="absolute bottom-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-purple-500/10 blur-3xl rounded-full"
+                className="absolute bottom-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full"
             />
         </div>
     );

@@ -14,7 +14,13 @@
         "experience": "Experiencia",
         "metrics": "Métricas Clave",
         "playbook": "Mi Metodología",
-        "techStack": "Stack Tecnológico"
+        "techStack": "Stack Tecnológico",
+        "techStackSub": "Mi toolkit de producción",
+        "servicesTitle": "Sistemas de IA + Automatización",
+        "servicesSubtitle": "Construyendo infraestructura inteligente que impulsa la eficiencia.",
+        "viewAllProjects": "Ver todos los proyectos",
+        "problemApproach": "Problema y Enfoque",
+        "keyResults": "Resultados Clave"
     },
     "Contact": {
         "title": "Hablemos",

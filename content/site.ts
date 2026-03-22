@@ -26,6 +26,37 @@ export const siteConfig = {
 
     topSkills: ["TypeScript", "Next.js", "Python", "AWS", "RAG", "n8n"],
 
+    skillsByCategory: [
+        {
+            id: "languages",
+            label: { en: "Languages", es: "Lenguajes" },
+            skills: ["TypeScript", "Python", "SQL"],
+            color: "text-cyan-500 dark:text-cyan-400",
+            bgColor: "bg-cyan-500/10",
+        },
+        {
+            id: "frameworks",
+            label: { en: "Frameworks", es: "Frameworks" },
+            skills: ["Next.js", "React", "FastAPI"],
+            color: "text-indigo-500 dark:text-indigo-400",
+            bgColor: "bg-indigo-500/10",
+        },
+        {
+            id: "cloud",
+            label: { en: "Cloud & Infra", es: "Cloud e Infra" },
+            skills: ["AWS", "Docker", "PostgreSQL"],
+            color: "text-purple-500 dark:text-purple-400",
+            bgColor: "bg-purple-500/10",
+        },
+        {
+            id: "ai",
+            label: { en: "AI & Automation", es: "IA y Automatización" },
+            skills: ["RAG", "OpenAI", "n8n"],
+            color: "text-emerald-500 dark:text-emerald-400",
+            bgColor: "bg-emerald-500/10",
+        },
+    ],
+
     services: [
         {
             icon: Bot,

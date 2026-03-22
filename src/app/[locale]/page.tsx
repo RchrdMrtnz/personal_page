@@ -1,10 +1,8 @@
 import Hero from "@/components/sections/Hero";
-
 import Outcomes from "@/components/sections/Outcomes";
 import Services from "@/components/sections/Services";
-
-import FeaturedWork from "@/components/sections/FeaturedWork";
 import TechStackSection from "@/components/sections/TechStackSection";
+import FeaturedWork from "@/components/sections/FeaturedWork";
 import AboutSection from "@/components/sections/AboutSection";
 import OfferSection from "@/components/sections/OfferSection";
 
@@ -18,12 +16,10 @@ export default async function Home({
   return (
     <div className="flex flex-col min-h-screen">
       <Hero locale={locale} />
-
       <Outcomes locale={locale} />
       <Services locale={locale} />
-
-      <FeaturedWork locale={locale} />
       <TechStackSection locale={locale} />
+      <FeaturedWork locale={locale} />
       <AboutSection locale={locale} />
       <OfferSection locale={locale} />
     </div>

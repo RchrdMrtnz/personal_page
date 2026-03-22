@@ -2,39 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { siteConfig } from "../../../content/site";
-import { motion, useInView, useSpring, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
-import { useEffect, useRef } from "react";
-
-const AnimatedCounter = ({ value, className }: { value: string, className?: string }) => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: true });
-
-    // Extract numeric part and non-numeric parts
-    const match = value.match(/([^0-9.]*)([0-9.]+)([^0-9.]*)/);
-    const prefix = match ? match[1] : "";
-    const number = match ? parseFloat(match[2]) : 0;
-    const suffix = match ? match[3] : "";
-
-    const motionValue = useMotionValue(0);
-    const springValue = useSpring(motionValue, { duration: 2000 });
-    const rounded = useTransform(springValue, (latest) => latest.toFixed(value.includes(".") ? 1 : 0));
-
-    useEffect(() => {
-        if (inView) {
-            motionValue.set(number);
-        }
-    }, [inView, number, motionValue]);
-
-    return (
-        <span ref={ref} className={className}>
-            {prefix}
-            <motion.span>{rounded}</motion.span>
-            {suffix}
-        </span>
-    );
-};
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 export default function Outcomes({ locale }: { locale: string }) {
     const t = useTranslations("Sections");
@@ -61,7 +32,7 @@ export default function Outcomes({ locale }: { locale: string }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-display">
                             {t("metrics")}
                         </h2>
                         <div className="w-20 h-1 bg-linear-to-r from-nebula-accent to-purple-500 mx-auto rounded-full" />
@@ -85,15 +56,15 @@ export default function Outcomes({ locale }: { locale: string }) {
                         >
                             <Card
                                 hoverEffect
-                                className="h-full bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] flex flex-col items-center justify-center p-8 text-center"
+                                className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] flex flex-col items-center justify-center p-8 text-center"
                             >
                                 <div className="text-4xl md:text-5xl font-bold text-nebula-accent mb-3 font-display">
                                     <AnimatedCounter value={metric.value} />
                                 </div>
-                                <h3 className="text-lg font-semibold text-white mb-2">
+                                <h3 className="text-lg font-semibold text-foreground mb-2">
                                     {locale === "en" ? metric.label.en : metric.label.es}
                                 </h3>
-                                <p className="text-sm text-gray-400">
+                                <p className="text-sm text-muted">
                                     {locale === "en" ? metric.detail.en : metric.detail.es}
                                 </p>
                             </Card>

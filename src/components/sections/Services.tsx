@@ -1,11 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { siteConfig } from "../../../content/site";
 import { Card } from "@/components/ui/Card";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function Services({ locale }: { locale: string }) {
+    const t = useTranslations("Sections");
     const services = siteConfig.services;
 
     const containerVariants = {
@@ -31,13 +33,11 @@ export default function Services({ locale }: { locale: string }) {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
-                            AI + Automation Systems
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-display">
+                            {t("servicesTitle")}
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                            {locale === "en"
-                                ? "Building intelligent infrastructure that drives efficiency."
-                                : "Construyendo infraestructura inteligente que impulsa la eficiencia."}
+                        <p className="text-muted max-w-2xl mx-auto text-lg">
+                            {t("servicesSubtitle")}
                         </p>
                     </motion.div>
                 </div>
@@ -59,20 +59,20 @@ export default function Services({ locale }: { locale: string }) {
                         >
                             <Card
                                 hoverEffect
-                                className="h-full bg-nebula-ink/30 backdrop-blur-xl border-white/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.25)] transition-all duration-300 p-6"
+                                className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] transition-all duration-300 p-6"
                             >
                                 <div className="flex justify-between items-start mb-6">
-                                    <div className="p-3 bg-white/5 rounded-lg text-nebula-accent ring-1 ring-white/10">
+                                    <div className="p-3 bg-foreground/5 rounded-lg text-nebula-accent ring-1 ring-foreground/10">
                                         <service.icon size={24} />
                                     </div>
-                                    <span className="text-xs font-mono text-gray-500 tracking-wider">
+                                    <span className="text-xs font-mono text-muted/70 tracking-wider">
                                         SRV_0{index + 1}
                                     </span>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 font-display">
+                                <h3 className="text-xl font-bold text-foreground mb-3 font-display">
                                     {locale === "en" ? service.title.en : service.title.es}
                                 </h3>
-                                <p className="text-gray-400 leading-relaxed">
+                                <p className="text-muted leading-relaxed">
                                     {locale === "en" ? service.desc.en : service.desc.es}
                                 </p>
                             </Card>

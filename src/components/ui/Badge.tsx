@@ -13,9 +13,9 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     ({ className, variant = 'default', ...props }, ref) => {
         const variants = {
-            default: 'border-nebula-accent/20 bg-nebula-accent/5 text-nebula-primary dark:text-nebula-accent',
-            outline: 'border-nebula-surface text-nebula-ink',
-            secondary: 'border-transparent bg-nebula-surface text-nebula-ink',
+            default: 'border-nebula-accent/20 bg-nebula-accent/5 text-nebula-accent',
+            outline: 'border-(--border) text-foreground',
+            secondary: 'border-transparent bg-surface text-foreground',
         };
 
         return (

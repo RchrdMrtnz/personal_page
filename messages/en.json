@@ -14,7 +14,13 @@
         "experience": "Experience",
         "metrics": "Metrics that Matter",
         "playbook": "My Playbook",
-        "techStack": "Tech Stack"
+        "techStack": "Tech Stack",
+        "techStackSub": "My production toolkit",
+        "servicesTitle": "AI + Automation Systems",
+        "servicesSubtitle": "Building intelligent infrastructure that drives efficiency.",
+        "viewAllProjects": "View all projects",
+        "problemApproach": "Problem & Approach",
+        "keyResults": "Key Results"
     },
     "Contact": {
         "title": "Let's Talk",

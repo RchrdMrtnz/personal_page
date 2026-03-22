@@ -8,14 +8,14 @@ export default function Footer() {
     const t = useTranslations("Footer");
 
     return (
-        <footer className="bg-nebula-ink border-t border-nebula-surface/10 py-12">
+        <footer className="bg-background border-t border-foreground/10 py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
-                        <span className="text-xl font-bold text-white tracking-tight font-display">
+                        <span className="text-xl font-bold text-foreground tracking-tight font-display">
                             Richard Pedraza<span className="text-nebula-accent">.</span>
                         </span>
-                        <p className="text-gray-400 text-sm mt-2">
+                        <p className="text-muted text-sm mt-2">
                             {t("rights")} © {new Date().getFullYear()}
                         </p>
                     </div>
@@ -26,7 +26,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="LinkedIn profile"
-                            className="text-gray-400 hover:text-nebula-accent transition-colors"
+                            className="text-muted hover:text-nebula-accent transition-colors"
                         >
                             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -38,7 +38,7 @@ export default function Footer() {
                             href={siteConfig.profile.links.medium}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-nebula-accent transition-colors"
+                            className="text-muted hover:text-nebula-accent transition-colors"
                         >
                             <span className="sr-only">Medium</span>
                             <svg
@@ -54,7 +54,7 @@ export default function Footer() {
                         <a
                             href={siteConfig.profile.links.email}
                             aria-label="Send email"
-                            className="text-gray-400 hover:text-nebula-accent transition-colors"
+                            className="text-muted hover:text-nebula-accent transition-colors"
                         >
                             <Mail size={20} />
                         </a>

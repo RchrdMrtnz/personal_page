@@ -15,8 +15,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = 'primary', size = 'md', ...props }, ref) => {
         const variants = {
             primary: 'bg-nebula-accent text-white shadow-soft hover:brightness-95 focus:ring-nebula-accent/40',
-            secondary: 'bg-nebula-surface text-nebula-ink hover:bg-nebula-surface/80 focus:ring-nebula-surface/40',
-            outline: 'border border-nebula-surface bg-transparent text-white hover:bg-nebula-surface/10 focus:ring-nebula-surface/40',
+            secondary: 'bg-surface text-foreground border border-(--border) hover:bg-foreground/5 focus:ring-nebula-surface/40',
+            outline: 'border border-(--border) bg-transparent text-foreground hover:bg-foreground/5 focus:ring-nebula-surface/40',
             ghost: 'bg-transparent text-nebula-accent hover:bg-nebula-accent/5 focus:ring-nebula-accent/20',
         };
 

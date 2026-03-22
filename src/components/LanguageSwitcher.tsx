@@ -21,14 +21,14 @@ export default function LanguageSwitcher() {
         <label className="relative inline-flex items-center">
             <select
                 defaultValue={locale}
-                className="bg-transparent py-1 pl-2 pr-6 text-sm font-medium text-gray-300 hover:text-white focus:outline-none cursor-pointer appearance-none"
+                className="bg-transparent py-1 pl-2 pr-6 text-sm font-medium text-muted hover:text-foreground focus:outline-none cursor-pointer appearance-none"
                 onChange={onSelectChange}
                 disabled={isPending}
             >
-                <option value="en" className="text-black">EN</option>
-                <option value="es" className="text-black">ES</option>
+                <option value="en" className="text-foreground bg-surface">EN</option>
+                <option value="es" className="text-foreground bg-surface">ES</option>
             </select>
-            <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-xs text-gray-400">
+            <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-xs text-muted">
                 ▼
             </span>
         </label>
