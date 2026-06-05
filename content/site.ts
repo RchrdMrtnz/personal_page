@@ -1,4 +1,4 @@
-import { Bot, Workflow, Database, Cpu, Zap, Activity, Server, TrendingUp, ShieldCheck, Phone, Mic, Users } from "lucide-react";
+import { Bot, Workflow, Database, Cpu, Zap, Activity, Target, TrendingUp, ShieldCheck, Phone, Mic, Users } from "lucide-react";
 
 export const siteConfig = {
     profile: {
@@ -92,37 +92,39 @@ export const siteConfig = {
         },
     ],
 
+    // Hero terminal cards — the IMPACT of the work (efficiency, quality, capability, seniority)
     heroMetrics: [
-        { label: { en: "Processing Time", es: "Tiempo de Procesamiento" }, value: "-70%", icon: Zap, color: "text-cyan-400", percentage: 70 },
-        { label: { en: "Voice Latency", es: "Latencia de Voz" }, value: "<800ms", icon: Activity, color: "text-indigo-400", percentage: 85 },
-        { label: { en: "Call Minutes/Month", es: "Minutos de Llamada/Mes" }, value: "5K+", icon: Server, color: "text-purple-400", percentage: 75 },
-        { label: { en: "Integrations", es: "Integraciones" }, value: "10+", icon: TrendingUp, color: "text-emerald-400", percentage: 60 },
+        { label: { en: "Faster processing", es: "Procesamiento más rápido" }, value: "-70%", icon: Zap, color: "text-cyan-400", percentage: 70 },
+        { label: { en: "Automated accuracy", es: "Precisión automatizada" }, value: "90%", icon: Target, color: "text-emerald-400", percentage: 90 },
+        { label: { en: "Real-time AI voice", es: "Voz IA en tiempo real" }, value: "<800ms", icon: Activity, color: "text-indigo-400", percentage: 85 },
+        { label: { en: "Years of experience", es: "Años de experiencia" }, value: "8+", icon: TrendingUp, color: "text-purple-400", percentage: 80 },
     ],
 
+    // Outcomes section — the SCALE of production work, each with project context
     metrics: [
         {
-            id: "processing-time",
-            value: "70%",
-            label: { en: "Faster data processing", es: "Procesamiento de datos más rápido" },
-            detail: { en: "Across automation pipelines", es: "En pipelines de automatización" },
+            id: "valuation-scale",
+            value: "5K+",
+            label: { en: "Listings processed per cycle", es: "Listings procesados por ciclo" },
+            detail: { en: "Automated valuation, 90% accuracy", es: "Valoración automatizada, 90% de precisión" },
         },
         {
-            id: "valuation-accuracy",
-            value: "90%",
-            label: { en: "Property valuation accuracy", es: "Precisión en valoración de propiedades" },
-            detail: { en: "On 5K+ listings per cycle", es: "Sobre 5K+ listings por ciclo" },
+            id: "voice-clients",
+            value: "10",
+            label: { en: "Multi-tenant voice clients", es: "Clientes de voz multi-inquilino" },
+            detail: { en: "5K+ call minutes/month in production", es: "5K+ min de llamadas/mes en producción" },
         },
         {
-            id: "voice-latency",
-            value: "<800ms",
-            label: { en: "Real-time voice latency", es: "Latencia de voz en tiempo real" },
-            detail: { en: "STT → LLM → TTS pipeline", es: "Pipeline STT → LLM → TTS" },
+            id: "records-classified",
+            value: "6K+",
+            label: { en: "Records classified with AI", es: "Registros clasificados con IA" },
+            detail: { en: "Under dynamic evaluation rules", es: "Bajo reglas de evaluación dinámicas" },
         },
         {
-            id: "experience",
-            value: "8+",
-            label: { en: "Years of experience", es: "Años de experiencia" },
-            detail: { en: "Backend, AI & automation", es: "Backend, IA y automatización" },
+            id: "insurers-unified",
+            value: "5",
+            label: { en: "Insurers unified", es: "Aseguradoras unificadas" },
+            detail: { en: "One API, scalable to 10+", es: "Una sola API, escalable a 10+" },
         },
     ],
 
@@ -138,8 +140,8 @@ export const siteConfig = {
             },
             highlights: [
                 {
-                    en: "Designed a provider-agnostic architecture abstracting each insurer's API behind a common interface, scalable to 10+ integrations (5 insurers live in production).",
-                    es: "Diseñé una arquitectura provider-agnostic que abstrae la API de cada aseguradora tras una interfaz común, escalable a 10+ integraciones (5 aseguradoras en producción).",
+                    en: "Unified 5 insurers—each with its own API—behind a single interface so users quote and buy policies in one place; the provider-agnostic design lets the business onboard new insurers without rewriting the platform (scalable to 10+).",
+                    es: "Unifiqué 5 aseguradoras —cada una con su propia API— bajo una sola interfaz para que los usuarios coticen y contraten pólizas en un solo lugar; el diseño provider-agnostic permite sumar nuevas aseguradoras sin reescribir la plataforma (escalable a 10+).",
                 },
                 {
                     en: "Built quoting, underwriting and policy issuance flows with Django REST Framework, PostgreSQL and Redis, optimizing performance through caching.",
@@ -167,8 +169,8 @@ export const siteConfig = {
                     es: "Orquesté un pipeline de voz en tiempo real con Pipecat (Deepgram STT → GPT-4.1-mini → Cartesia TTS) con latencia inferior a 800ms, manejo de interrupciones, detección de fin de turno y VAD sobre PSTN ↔ WebRTC ↔ WebSocket.",
                 },
                 {
-                    en: "Designed an API-driven dynamic conversational flow engine that generates dialog nodes and LLM handlers at runtime from JSON, with episodic memory, multi-tenant identity and prompt-injection protection.",
-                    es: "Diseñé un motor de flujo conversacional dinámico dirigido por API que genera nodos y handlers LLM en tiempo de ejecución desde JSON, con memoria episódica, identidad multi-inquilino y protección contra inyección de prompts.",
+                    en: "Built a dynamic conversational flow engine driven by JSON/API—new call flows ship without code changes—with episodic memory, per-client identity and prompt-injection protection.",
+                    es: "Construí un motor de flujo conversacional dinámico dirigido por JSON/API —los flujos de llamada nuevos se publican sin tocar código— con memoria episódica, identidad por cliente y protección contra inyección de prompts.",
                 },
                 {
                     en: "Developed a telephony broker orchestrating a headless Chromium (Playwright) running RingCentral's SIP/WebRTC WebPhone, with a custom PCM/WAV frame serializer and real-time observability.",
