@@ -1,15 +1,15 @@
-import { Bot, Workflow, Database, Cpu, Zap, Activity, Server, TrendingUp } from "lucide-react";
+import { Bot, Workflow, Database, Cpu, Zap, Activity, Server, TrendingUp, ShieldCheck, Phone, Mic, Users } from "lucide-react";
 
 export const siteConfig = {
     profile: {
         name: "Richard Pedraza",
         role: {
-            en: "Full-Stack Developer & Automation Engineer | AI-enabled systems that scale and deliver ROI",
-            es: "Full-Stack Developer & Automation Engineer | Sistemas con IA y automatización que escalan y generan ROI",
+            en: "Senior Backend Engineer | Python · Django · AWS · AI & Automation",
+            es: "Senior Backend Engineer | Python · Django · AWS · IA & Automatización",
         },
         differentiator: {
-            en: "I don’t just ship code—I design architectures that solve business-critical problems with clarity and speed.",
-            es: "No solo envío código: diseño arquitecturas que resuelven problemas críticos de negocio con claridad y velocidad.",
+            en: "Senior Backend Engineer with 8+ years designing and scaling robust systems with Python, Django, FastAPI and Node.js. I build production AI—from real-time voice agents to complex automation—on AWS architectures that deliver measurable ROI.",
+            es: "Senior Backend Engineer con más de 8 años diseñando y escalando sistemas robustos con Python, Django, FastAPI y Node.js. Construyo IA en producción —desde agentes de voz en tiempo real hasta automatización compleja— sobre arquitecturas AWS que generan ROI medible.",
         },
         links: {
             linkedin: "https://www.linkedin.com/in/rchrd-pdrz1993/",
@@ -24,34 +24,34 @@ export const siteConfig = {
         },
     },
 
-    topSkills: ["TypeScript", "Next.js", "Python", "AWS", "RAG", "n8n"],
+    topSkills: ["Python", "Django", "FastAPI", "TypeScript", "AWS", "Pipecat"],
 
     skillsByCategory: [
         {
             id: "languages",
             label: { en: "Languages", es: "Lenguajes" },
-            skills: ["TypeScript", "Python", "SQL"],
+            skills: ["Python", "Node.js", "TypeScript", "SQL"],
             color: "text-cyan-500 dark:text-cyan-400",
             bgColor: "bg-cyan-500/10",
         },
         {
-            id: "frameworks",
-            label: { en: "Frameworks", es: "Frameworks" },
-            skills: ["Next.js", "React", "FastAPI"],
+            id: "backend",
+            label: { en: "Backend & APIs", es: "Backend & APIs" },
+            skills: ["Django / DRF", "FastAPI", "NestJS", "Express.js"],
             color: "text-indigo-500 dark:text-indigo-400",
             bgColor: "bg-indigo-500/10",
         },
         {
             id: "cloud",
-            label: { en: "Cloud & Infra", es: "Cloud e Infra" },
-            skills: ["AWS", "Docker", "PostgreSQL"],
+            label: { en: "Cloud & DevOps", es: "Cloud y DevOps" },
+            skills: ["AWS", "Docker", "Jenkins", "CI/CD"],
             color: "text-purple-500 dark:text-purple-400",
             bgColor: "bg-purple-500/10",
         },
         {
             id: "ai",
-            label: { en: "AI & Automation", es: "IA y Automatización" },
-            skills: ["RAG", "OpenAI", "n8n"],
+            label: { en: "AI & Voice", es: "IA y Voz" },
+            skills: ["Pipecat", "LLMs / GPT-4.1", "Deepgram", "Vector Search"],
             color: "text-emerald-500 dark:text-emerald-400",
             bgColor: "bg-emerald-500/10",
         },
@@ -60,164 +60,299 @@ export const siteConfig = {
     services: [
         {
             icon: Bot,
-            title: { en: "LLM Integrations", es: "Integraciones LLM" },
+            title: { en: "LLM & Voice Integrations", es: "Integraciones LLM y Voz" },
             desc: {
-                en: "Custom AI agents, RAG pipelines, and structured outputs aligned with real business logic.",
-                es: "Agentes de IA personalizados, pipelines RAG y salidas estructuradas alineadas con lógica real de negocio.",
+                en: "Real-time voice agents and LLM pipelines (Pipecat, GPT-4.1, RAG) wired into real business logic, with sub-second latency and prompt-injection protection.",
+                es: "Agentes de voz en tiempo real y pipelines LLM (Pipecat, GPT-4.1, RAG) conectados a lógica real de negocio, con latencia sub-segundo y protección contra inyección de prompts.",
             },
         },
         {
             icon: Workflow,
             title: { en: "Workflow Automation", es: "Automatización de Flujos" },
             desc: {
-                en: "End-to-end automation replacing manual operations with resilient, scalable systems.",
-                es: "Automatización de extremo a extremo que reemplaza operaciones manuales por sistemas resilientes y escalables.",
+                en: "End-to-end automation with n8n, Python and event-driven integrations that replace manual operations and sync data across CRM, ERP and SaaS.",
+                es: "Automatización de extremo a extremo con n8n, Python e integraciones event-driven que reemplazan operaciones manuales y sincronizan datos entre CRM, ERP y SaaS.",
             },
         },
         {
             icon: Database,
             title: { en: "Data Pipelines", es: "Pipelines de Datos" },
             desc: {
-                en: "Reliable ingestion, processing, and enrichment pipelines built for operational scale.",
-                es: "Pipelines confiables de ingesta, procesamiento y enriquecimiento diseñados para escalar operaciones.",
+                en: "Large-scale ingestion and processing pipelines (Scrapy, Pandas, async queues) built for operational scale and reliability.",
+                es: "Pipelines de ingesta y procesamiento a gran escala (Scrapy, Pandas, colas asíncronas) construidos para escala operativa y confiabilidad.",
             },
         },
         {
             icon: Cpu,
             title: { en: "Backend Architecture", es: "Arquitectura Backend" },
             desc: {
-                en: "System architecture designed for performance, maintainability, and controlled technical debt.",
-                es: "Arquitectura de sistemas diseñada para rendimiento, mantenibilidad y deuda técnica controlada.",
+                en: "Provider-agnostic, multi-tenant architectures on AWS (Django/DRF, FastAPI, Redis) designed for performance, maintainability and controlled technical debt.",
+                es: "Arquitecturas provider-agnostic y multi-inquilino sobre AWS (Django/DRF, FastAPI, Redis) diseñadas para rendimiento, mantenibilidad y deuda técnica controlada.",
             },
         },
     ],
 
     heroMetrics: [
-        { label: { en: "Efficiency Boost", es: "Aumento de Eficiencia" }, value: "+73%", icon: Zap, color: "text-cyan-400", percentage: 80 },
-        { label: { en: "Requests/Week", es: "Peticiones/Semana" }, value: "25k", icon: Activity, color: "text-indigo-400", percentage: 70 },
-        { label: { en: "Uptime", es: "Disponibilidad" }, value: "99.9%", icon: Server, color: "text-purple-400", percentage: 90 },
-        { label: { en: "Latency Reduction", es: "Reducción de Latencia" }, value: "-35%", icon: TrendingUp, color: "text-emerald-400", percentage: 60 },
+        { label: { en: "Processing Time", es: "Tiempo de Procesamiento" }, value: "-70%", icon: Zap, color: "text-cyan-400", percentage: 70 },
+        { label: { en: "Voice Latency", es: "Latencia de Voz" }, value: "<800ms", icon: Activity, color: "text-indigo-400", percentage: 85 },
+        { label: { en: "Call Minutes/Month", es: "Minutos de Llamada/Mes" }, value: "5K+", icon: Server, color: "text-purple-400", percentage: 75 },
+        { label: { en: "Integrations", es: "Integraciones" }, value: "10+", icon: TrendingUp, color: "text-emerald-400", percentage: 60 },
     ],
 
     metrics: [
         {
             id: "processing-time",
-            value: "73%",
-            label: { en: "Reduced data processing time", es: "Reducción en tiempo de procesamiento" },
-            detail: { en: "30 min → under 8 min", es: "30 min → menos de 8 min" },
+            value: "70%",
+            label: { en: "Faster data processing", es: "Procesamiento de datos más rápido" },
+            detail: { en: "Across automation pipelines", es: "En pipelines de automatización" },
         },
         {
-            id: "ingestion-scale",
-            value: "25k+",
-            label: { en: "Records ingested/week", es: "Registros procesados/semana" },
-            detail: { en: "99.3% accuracy", es: "99.3% de precisión" },
+            id: "valuation-accuracy",
+            value: "90%",
+            label: { en: "Property valuation accuracy", es: "Precisión en valoración de propiedades" },
+            detail: { en: "On 5K+ listings per cycle", es: "Sobre 5K+ listings por ciclo" },
         },
         {
-            id: "csv-automation",
-            value: "10m",
-            label: { en: "CSV workflow duration", es: "Duración flujo CSV" },
-            detail: { en: "Reduced from 1 hour", es: "Reducido de 1 hora" },
+            id: "voice-latency",
+            value: "<800ms",
+            label: { en: "Real-time voice latency", es: "Latencia de voz en tiempo real" },
+            detail: { en: "STT → LLM → TTS pipeline", es: "Pipeline STT → LLM → TTS" },
         },
         {
-            id: "valuation-engine",
-            value: "<2m",
-            label: { en: "Decision turnaround time", es: "Tiempo de toma de decisión" },
-            detail: { en: "Reduced from days to minutes", es: "Reducido de días a minutos" },
+            id: "experience",
+            value: "8+",
+            label: { en: "Years of experience", es: "Años de experiencia" },
+            detail: { en: "Backend, AI & automation", es: "Backend, IA y automatización" },
         },
     ],
 
     experience: [
         {
-            company: "Technology & Automation Projects",
-            role: { en: "Full-Stack & AI Engineer", es: "Ingeniero Full-Stack e IA" },
-            period: "2023 – Present",
-            description: {
-                en: "Designed and delivered end-to-end software systems focused on automation, AI integration, and operational efficiency across multiple business domains.",
-                es: "Diseñé y desarrollé sistemas de software de punta a punta enfocados en automatización, integración de IA y eficiencia operativa en múltiples dominios de negocio.",
+            company: "Disglobal",
+            role: { en: "Senior Backend Engineer", es: "Senior Backend Engineer" },
+            period: "Aug 2025 – Present",
+            location: { en: "Remote", es: "Remoto" },
+            summary: {
+                en: "Lead the backend for an insurtech mobile platform that aggregates multiple insurance providers behind a single unified experience.",
+                es: "Lidero el backend de una plataforma insurtech (app móvil) que agrega múltiples aseguradoras detrás de una experiencia unificada.",
             },
+            highlights: [
+                {
+                    en: "Designed a provider-agnostic architecture abstracting each insurer's API behind a common interface, scalable to 10+ integrations (5 insurers live in production).",
+                    es: "Diseñé una arquitectura provider-agnostic que abstrae la API de cada aseguradora tras una interfaz común, escalable a 10+ integraciones (5 aseguradoras en producción).",
+                },
+                {
+                    en: "Built quoting, underwriting and policy issuance flows with Django REST Framework, PostgreSQL and Redis, optimizing performance through caching.",
+                    es: "Construí los flujos de cotización, suscripción y emisión de pólizas con Django REST Framework, PostgreSQL y Redis, optimizando el rendimiento con caché.",
+                },
+                {
+                    en: "Implemented automated document OCR with AWS Textract and a multi-vendor pharmacy marketplace module.",
+                    es: "Implementé OCR automatizado de documentos con AWS Textract y un módulo de marketplace de farmacia multi-vendedor.",
+                },
+            ],
+            stack: ["Django REST", "PostgreSQL", "Redis", "AWS Textract"],
         },
         {
-            company: "Automation & AI Consulting",
+            company: "Tesla Media Group",
+            role: { en: "Lead AI Voice Engineer", es: "Lead AI Voice Engineer" },
+            period: "Aug 2025 – Present",
+            location: { en: "Remote · California", es: "Remoto · California" },
+            summary: {
+                en: "Built an end-to-end production AI voice phone assistant serving 10 multi-tenant clients and 5,000+ call minutes per month.",
+                es: "Construí un asistente telefónico de voz con IA en producción, atendiendo 10 clientes multi-inquilino y más de 5.000 minutos de llamadas al mes.",
+            },
+            highlights: [
+                {
+                    en: "Orchestrated a real-time voice pipeline with Pipecat (Deepgram STT → GPT-4.1-mini → Cartesia TTS) achieving sub-800ms latency, with barge-in, end-of-turn detection and VAD across PSTN ↔ WebRTC ↔ WebSocket.",
+                    es: "Orquesté un pipeline de voz en tiempo real con Pipecat (Deepgram STT → GPT-4.1-mini → Cartesia TTS) con latencia inferior a 800ms, manejo de interrupciones, detección de fin de turno y VAD sobre PSTN ↔ WebRTC ↔ WebSocket.",
+                },
+                {
+                    en: "Designed an API-driven dynamic conversational flow engine that generates dialog nodes and LLM handlers at runtime from JSON, with episodic memory, multi-tenant identity and prompt-injection protection.",
+                    es: "Diseñé un motor de flujo conversacional dinámico dirigido por API que genera nodos y handlers LLM en tiempo de ejecución desde JSON, con memoria episódica, identidad multi-inquilino y protección contra inyección de prompts.",
+                },
+                {
+                    en: "Developed a telephony broker orchestrating a headless Chromium (Playwright) running RingCentral's SIP/WebRTC WebPhone, with a custom PCM/WAV frame serializer and real-time observability.",
+                    es: "Desarrollé un broker de telefonía que orquesta Chromium headless (Playwright) corriendo el WebPhone SIP/WebRTC de RingCentral, con un serializador PCM/WAV propio y observabilidad en tiempo real.",
+                },
+            ],
+            stack: ["Pipecat", "FastAPI", "WebRTC", "Docker", "Playwright"],
+        },
+        {
+            company: "Confidential Clients · Freelance",
+            role: { en: "Senior Consultant — Backend & AI", es: "Consultor Senior — Backend e IA" },
+            period: "Feb 2025 – Dec 2025",
+            location: { en: "Remote", es: "Remoto" },
+            summary: {
+                en: "Backend and AI architecture for high-volume SaaS products under NDA.",
+                es: "Arquitectura de backend e IA para productos SaaS de alto volumen bajo NDA.",
+            },
+            highlights: [
+                {
+                    en: "Architected the backend of a high-volume automated audio transcription platform (Madrid), orchestrating jobs with async task queues and a privacy-first zero-knowledge authentication mechanism.",
+                    es: "Arquitecté el backend de una plataforma de transcripción de audio automatizada de alto volumen (Madrid), orquestando trabajos con colas asíncronas y un mecanismo de autenticación zero-knowledge centrado en la privacidad.",
+                },
+                {
+                    en: "Architected AI agents for a voice-based recruitment platform (Miami) that ranks talent and delivers voice summaries, with a classification engine over 6,000+ metadata-rich records.",
+                    es: "Arquitecté agentes de IA para una plataforma de reclutamiento por voz (Miami) que rankea talento y entrega resúmenes por voz, con un motor de clasificación sobre 6.000+ registros ricos en metadatos.",
+                },
+                {
+                    en: "Built asynchronous batch-processing architectures for continuous parallel workloads and established system observability standards.",
+                    es: "Construí arquitecturas de procesamiento por lotes asíncrono para cargas paralelas continuas y establecí estándares de observabilidad.",
+                },
+            ],
+            stack: ["FastAPI", "Async Queues", "Vector Search", "Zero-Knowledge"],
+        },
+        {
+            company: "Remax",
+            role: { en: "Tech Lead → Full-stack Developer", es: "Tech Lead → Full-stack Developer" },
+            period: "Sep 2023 – Jan 2026",
+            location: { en: "Remote", es: "Remoto" },
+            summary: {
+                en: "Led the architecture and team of a business-critical multi-service platform on AWS, after delivering its core automation as a full-stack developer.",
+                es: "Lideré la arquitectura y el equipo de una plataforma multi-servicio crítica sobre AWS, tras entregar su automatización central como full-stack developer.",
+            },
+            highlights: [
+                {
+                    en: "Delivered an automated property valuation system processing 5,000+ listings per cycle, cutting valuation time by 70% and reaching up to 90% pricing accuracy.",
+                    es: "Entregué un sistema automatizado de valoración de propiedades que procesa 5.000+ listings por ciclo, reduciendo el tiempo de valoración en 70% y alcanzando hasta 90% de precisión.",
+                },
+                {
+                    en: "Led a team of 2 developers, established engineering standards (security, observability, deployments) and implemented CI/CD pipelines with Jenkins.",
+                    es: "Lideré un equipo de 2 desarrolladores, establecí estándares de ingeniería (seguridad, observabilidad, despliegues) e implementé pipelines CI/CD con Jenkins.",
+                },
+                {
+                    en: "Built data extraction pipelines (Scrapy, BeautifulSoup) and comparative pricing models with Pandas, plus interactive dashboards for internal teams.",
+                    es: "Construí pipelines de extracción de datos (Scrapy, BeautifulSoup) y modelos de precios comparativos con Pandas, además de dashboards interactivos para equipos internos.",
+                },
+            ],
+            stack: ["Python", "Django", "Next.js", "Pandas", "AWS", "Jenkins"],
+        },
+        {
+            company: "Crazy Imagine Software",
             role: { en: "Automation Engineer", es: "Ingeniero de Automatización" },
-            period: "2024 – Present",
-            description: {
-                en: "Built automation infrastructures combining Python, n8n, and AI services to replace manual workflows and enable scalable operations.",
-                es: "Construí infraestructuras de automatización combinando Python, n8n y servicios de IA para reemplazar flujos manuales y habilitar operaciones escalables.",
+            period: "Mar 2025 – Jun 2025",
+            location: { en: "Remote", es: "Remoto" },
+            summary: {
+                en: "Designed and deployed complex automations for business-critical B2B workflows.",
+                es: "Diseñé y desplegué automatizaciones complejas para flujos B2B críticos.",
             },
+            highlights: [
+                {
+                    en: "Built n8n automations integrating chatbots, LLM pipelines and SaaS APIs, enhanced with Python and JavaScript for event-driven flows.",
+                    es: "Construí automatizaciones en n8n integrando chatbots, pipelines de LLM y APIs SaaS, potenciadas con Python y JavaScript para flujos event-driven.",
+                },
+                {
+                    en: "Synced data across CRM, ERP and marketing platforms through internal and third-party API integrations, and added AI capabilities (LLM APIs, vector search, prompt engineering).",
+                    es: "Sincronicé datos entre CRM, ERP y plataformas de marketing mediante integraciones de APIs internas y de terceros, y agregué capacidades de IA (APIs de LLM, búsqueda vectorial, prompt engineering).",
+                },
+            ],
+            stack: ["n8n", "Python", "LLM APIs", "Vector Search"],
         },
         {
-            company: "AI Decision Systems",
-            role: { en: "AI Systems Developer", es: "Desarrollador de Sistemas de IA" },
-            period: "2025",
-            description: {
-                en: "Developed configurable AI-based decision systems for screening, ranking, and automated communication, adaptable to different industries and business rules.",
-                es: "Desarrollé sistemas de decisión con IA configurables para filtrado, ranking y comunicación automatizada, adaptables a distintas industrias y reglas de negocio.",
+            company: "Universidad ISEP",
+            role: { en: "Integration & Automation Specialist", es: "Especialista en Integración y Automatización" },
+            period: "Jan 2025 – Mar 2025",
+            location: { en: "Remote", es: "Remoto" },
+            summary: {
+                en: "Designed and optimized automated workflows connecting disparate systems with no-code/low-code tools and API integrations.",
+                es: "Diseñé y optimicé flujos automatizados conectando sistemas dispares con herramientas no-code/low-code e integraciones API.",
             },
+            highlights: [
+                {
+                    en: "Analyzed business requirements to build custom automation (n8n + API integrations), reducing manual tasks and driving digital transformation across operational units.",
+                    es: "Analicé requisitos de negocio para construir automatización a medida (n8n + integraciones API), reduciendo tareas manuales e impulsando la transformación digital en distintas unidades operativas.",
+                },
+            ],
+            stack: ["n8n", "API Integration", "Low-code"],
         },
     ],
 
     caseStudies: [
         {
-            id: "academic-content-ai",
-            title: { en: "Automated Academic Content Generation", es: "Generación Automatizada de Contenido Académico" },
+            id: "insurtech-platform",
+            title: { en: "Insurtech Aggregation Platform", es: "Plataforma Insurtech de Agregación" },
             description: {
-                en: "AI-driven pipeline that generates, reviews, and updates academic content using GPT and n8n with semantic validation and version control.",
-                es: "Pipeline impulsado por IA que genera, revisa y actualiza contenido académico usando GPT y n8n con validación semántica y control de versiones.",
+                en: "Provider-agnostic backend that aggregates multiple insurers behind a single API—quoting, underwriting and policy issuance—plus document OCR and a multi-vendor pharmacy marketplace.",
+                es: "Backend provider-agnostic que agrega múltiples aseguradoras tras una sola API —cotización, suscripción y emisión de pólizas— más OCR de documentos y un marketplace de farmacia multi-vendedor.",
             },
-            tags: ["GPT", "n8n", "Content Automation"],
-            stats: { en: "Content cycles reduced from weeks to days", es: "Ciclos de contenido reducidos de semanas a días" },
-            image: "/projects/academic.webp",
+            tags: ["Django REST", "PostgreSQL", "AWS Textract"],
+            stats: { en: "5 insurers live · scalable to 10+", es: "5 aseguradoras en prod · escalable a 10+" },
+            icon: ShieldCheck,
         },
         {
-            id: "voice-ai-platform",
-            title: { en: "Real-Time Voice AI Platform", es: "Plataforma de IA por Voz en Tiempo Real" },
+            id: "voice-ai-assistant",
+            title: { en: "Real-Time AI Voice Assistant", es: "Asistente de Voz con IA en Tiempo Real" },
             description: {
-                en: "Voice-based AI system using WebRTC, AssemblyAI, OpenAI and ElevenLabs for live transcription, contextual responses, and automated summaries.",
-                es: "Sistema de IA por voz usando WebRTC, AssemblyAI, OpenAI y ElevenLabs para transcripción en vivo, respuestas contextuales y resúmenes automáticos.",
+                en: "End-to-end multi-tenant voice phone assistant with a real-time Pipecat pipeline (Deepgram → GPT-4.1-mini → Cartesia), a dynamic API-driven flow engine and a telephony broker bridging PSTN and WebRTC.",
+                es: "Asistente telefónico de voz multi-inquilino de extremo a extremo, con pipeline Pipecat en tiempo real (Deepgram → GPT-4.1-mini → Cartesia), motor de flujo dinámico dirigido por API y un broker de telefonía que une PSTN y WebRTC.",
             },
-            tags: ["WebRTC", "Streaming AI", "Voice Agents"],
-            stats: { en: "Automated inbound call handling", es: "Automatización de llamadas entrantes" },
-            image: "/projects/voice-ai.webp",
+            tags: ["Pipecat", "WebRTC", "FastAPI"],
+            stats: { en: "<800ms latency · 5K+ min/month", es: "<800ms latencia · 5K+ min/mes" },
+            icon: Phone,
         },
         {
-            id: "recruitment-ai-engine",
-            title: { en: "AI-Based Recruitment Decision Engine", es: "Motor de Decisión para Reclutamiento con IA" },
+            id: "property-valuation",
+            title: { en: "Automated Property Valuation", es: "Valoración Automatizada de Propiedades" },
             description: {
-                en: "Flexible AI system to filter, rank, and follow up with candidates using LLMs and configurable business rules, adaptable to multiple industries.",
-                es: "Sistema de IA flexible para filtrar, rankear y dar seguimiento a candidatos usando LLMs y reglas de negocio configurables, adaptable a múltiples industrias.",
+                en: "Automated valuation engine processing 5,000+ listings per cycle, powered by large-scale scraping (Scrapy/BeautifulSoup), comparative pricing models in Pandas and interactive internal dashboards.",
+                es: "Motor de valoración automatizada que procesa 5.000+ listings por ciclo, con scraping a gran escala (Scrapy/BeautifulSoup), modelos de precios comparativos en Pandas y dashboards internos interactivos.",
             },
-            tags: ["LLMs", "Decision Systems", "Automation"],
-            stats: { en: "Up to 70% reduction in manual screening effort", es: "Hasta 70% de reducción en esfuerzo de preselección manual" },
-            image: "/projects/recruitment.webp",
+            tags: ["Python", "Pandas", "Scrapy"],
+            stats: { en: "70% faster · 90% accuracy", es: "70% más rápido · 90% precisión" },
+            icon: TrendingUp,
         },
         {
-            id: "ai-video-automation",
-            title: { en: "Automated AI Video Production", es: "Producción Automatizada de Video con IA" },
+            id: "audio-transcription",
+            title: { en: "High-Volume Transcription SaaS", es: "SaaS de Transcripción de Alto Volumen" },
+            client: { en: "Confidential client · Madrid", es: "Cliente confidencial · Madrid" },
             description: {
-                en: "End-to-end automated video creation pipeline combining image generation, AI voice synthesis, and automated composition tools.",
-                es: "Pipeline de creación de video totalmente automatizado combinando generación de imágenes, síntesis de voz con IA y herramientas de composición automática.",
+                en: "Backend for a high-volume automated audio transcription platform: asynchronous task queues for large audio workloads and a privacy-first authentication mechanism with irreversible zero-knowledge hashing.",
+                es: "Backend para una plataforma de transcripción de audio automatizada de alto volumen: colas de tareas asíncronas para grandes cargas de audio y un mecanismo de autenticación privacy-first con hashing zero-knowledge irreversible.",
             },
-            tags: ["Generative AI", "Video Automation"],
-            stats: { en: "Zero manual video editing", es: "Edición manual eliminada" },
-            image: "/projects/video.webp",
+            tags: ["Async Queues", "Zero-Knowledge", "SaaS"],
+            stats: { en: "Privacy-first architecture", es: "Arquitectura privacy-first" },
+            icon: Mic,
+        },
+        {
+            id: "recruitment-intelligence",
+            title: { en: "Voice Recruitment Intelligence", es: "Inteligencia de Reclutamiento por Voz" },
+            client: { en: "Confidential client · Miami", es: "Cliente confidencial · Miami" },
+            description: {
+                en: "AI agents that rank talent and deliver voice summaries to recruiters, combining conversational flows with a classification engine over 6,000+ metadata-rich records under dynamic evaluation rules.",
+                es: "Agentes de IA que rankean talento y entregan resúmenes por voz a reclutadores, combinando flujos conversacionales con un motor de clasificación sobre 6.000+ registros ricos en metadatos bajo reglas dinámicas.",
+            },
+            tags: ["AI Agents", "Vector Search", "Voice"],
+            stats: { en: "6K+ records classified", es: "6K+ registros clasificados" },
+            icon: Users,
+        },
+        {
+            id: "b2b-automation",
+            title: { en: "B2B Workflow Automation", es: "Automatización de Flujos B2B" },
+            description: {
+                en: "Complex n8n automations for business-critical B2B workflows—chatbots, LLM pipelines and vector search—syncing data across CRM, ERP and marketing platforms via internal and third-party APIs.",
+                es: "Automatizaciones complejas en n8n para flujos B2B críticos —chatbots, pipelines de LLM y búsqueda vectorial— sincronizando datos entre CRM, ERP y plataformas de marketing vía APIs internas y de terceros.",
+            },
+            tags: ["n8n", "LLM", "CRM/ERP"],
+            stats: { en: "Event-driven pipelines", es: "Pipelines event-driven" },
+            icon: Workflow,
         },
     ],
 
     consulting: {
         title: { en: "AI Consulting & System Design", es: "Consultoría e Integración de IA" },
         pitch: {
-            en: "I help companies integrate AI in a practical, reliable, and business-aligned way—focused on operational impact, not experimentation.",
+            en: "I help companies integrate AI in a practical, reliable, business-aligned way—focused on operational impact, not experimentation.",
             es: "Ayudo a empresas a integrar IA de forma práctica, confiable y alineada al negocio, enfocada en impacto operativo real y no en experimentación.",
         },
         services: [
-            { en: "AI opportunity assessment and feasibility analysis", es: "Evaluación de oportunidades de IA y viabilidad técnica" },
+            { en: "AI opportunity assessment and technical feasibility", es: "Evaluación de oportunidades de IA y viabilidad técnica" },
             { en: "Design of AI-enabled decision and automation systems", es: "Diseño de sistemas de decisión y automatización con IA" },
-            { en: "LLM, workflow and system integration", es: "Integración de LLMs, flujos y sistemas existentes" },
+            { en: "LLM, voice, workflow and system integration", es: "Integración de LLMs, voz, flujos y sistemas existentes" },
             { en: "Scalability, cost control and maintainability guidance", es: "Acompañamiento en escalabilidad, control de costos y mantenibilidad" },
         ],
         outcome: {
-            en: "Clear technical roadmap and AI systems ready to operate and scale.",
-            es: "Hoja de ruta técnica clara y sistemas de IA listos para operar y escalar.",
+            en: "A clear technical roadmap and AI systems ready to operate and scale.",
+            es: "Una hoja de ruta técnica clara y sistemas de IA listos para operar y escalar.",
         },
         cta: { en: "Explore AI Consulting", es: "Explorar Consultoría en IA" },
     },
@@ -236,19 +371,19 @@ export const siteConfig = {
     entryOffer: {
         title: { en: "How We Start", es: "Cómo Empezamos" },
         description: {
-            en: "Focused technical discovery to identify automation opportunities and high-impact quick wins.",
-            es: "Diagnóstico técnico enfocado para identificar oportunidades de automatización y quick wins de alto impacto.",
+            en: "A focused technical discovery to map automation opportunities and high-impact quick wins.",
+            es: "Un diagnóstico técnico enfocado para mapear oportunidades de automatización y quick wins de alto impacto.",
         },
         deliverable: {
             en: "A prioritized automation roadmap with measurable impact.",
-            es: "Hoja de ruta de automatización priorizada con impacto medible.",
+            es: "Una hoja de ruta de automatización priorizada con impacto medible.",
         },
     },
 
     trust: {
         documentation: {
-            en: "All systems are delivered with clear technical documentation.",
-            es: "Todos los sistemas se entregan con documentación técnica clara.",
+            en: "Systems delivered with clear technical documentation.",
+            es: "Sistemas entregados con documentación técnica clara.",
         },
         maintainability: {
             en: "Built for long-term maintainability and low operational risk.",

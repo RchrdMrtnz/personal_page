@@ -78,21 +78,53 @@ export default async function AboutPage({
                             key={index}
                             className="bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300 group"
                         >
-                            <div className="flex flex-col md:flex-row gap-4 md:items-start justify-between">
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                                        <h3 className="text-xl font-bold text-foreground font-display group-hover:text-nebula-accent transition-colors">{exp.company}</h3>
-                                        <div className="px-3 py-1 text-xs font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded-full">
-                                            {exp.period}
+                            <div className="flex flex-col gap-4">
+                                {/* Header */}
+                                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-foreground font-display group-hover:text-nebula-accent transition-colors">
+                                            {exp.company}
+                                        </h3>
+                                        <div className="text-nebula-accent font-medium mt-1 flex items-center gap-2 text-sm md:text-base">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-nebula-accent animate-pulse" />
+                                            {locale === "en" ? exp.role.en : exp.role.es}
                                         </div>
                                     </div>
-                                    <div className="text-nebula-accent font-medium mb-4 flex items-center gap-2 text-sm md:text-base">
-                                        <span className="h-1.5 w-1.5 rounded-full bg-nebula-accent animate-pulse" />
-                                        {locale === "en" ? exp.role.en : exp.role.es}
+                                    <div className="flex flex-col md:items-end gap-1.5 shrink-0">
+                                        <div className="px-3 py-1 text-xs font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded-full w-fit">
+                                            {exp.period}
+                                        </div>
+                                        <span className="text-xs text-muted font-mono">
+                                            {locale === "en" ? exp.location.en : exp.location.es}
+                                        </span>
                                     </div>
-                                    <p className="text-muted text-sm leading-relaxed max-w-3xl">
-                                        {locale === "en" ? exp.description.en : exp.description.es}
-                                    </p>
+                                </div>
+
+                                {/* Summary */}
+                                <p className="text-muted-foreground text-sm leading-relaxed">
+                                    {locale === "en" ? exp.summary.en : exp.summary.es}
+                                </p>
+
+                                {/* Highlights */}
+                                <ul className="space-y-2.5">
+                                    {exp.highlights.map((h, i) => (
+                                        <li key={i} className="flex gap-3 text-sm text-muted leading-relaxed">
+                                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-nebula-accent/60 shrink-0" />
+                                            <span>{locale === "en" ? h.en : h.es}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                {/* Stack */}
+                                <div className="flex flex-wrap gap-2 pt-1">
+                                    {exp.stack.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-3 py-1 text-xs font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded-full hover:border-nebula-accent/50 hover:text-foreground transition-colors cursor-default"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
                         </Card>

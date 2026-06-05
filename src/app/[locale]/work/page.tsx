@@ -55,9 +55,17 @@ export default async function WorkPage({
                                         <div className="flex items-center gap-2 text-nebula-accent mb-4 font-mono text-sm tracking-wider">
                                             <span>PRJ_0{index + 1}</span>
                                         </div>
-                                        <h3 className="text-3xl font-bold text-foreground mb-4 font-display group-hover:text-nebula-accent transition-colors">
+                                        <div className="inline-flex items-center justify-center h-12 w-12 rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg mb-5">
+                                            <project.icon size={22} />
+                                        </div>
+                                        <h3 className="text-3xl font-bold text-foreground mb-2 font-display group-hover:text-nebula-accent transition-colors">
                                             {locale === "en" ? project.title.en : project.title.es}
                                         </h3>
+                                        {project.client && (
+                                            <div className="text-xs font-mono text-muted tracking-wide">
+                                                {locale === "en" ? project.client.en : project.client.es}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="mt-8 relative z-10">
                                         <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-foreground/5 border border-foreground/10 text-foreground group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">

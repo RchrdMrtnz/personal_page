@@ -5,7 +5,6 @@ import { siteConfig } from "../../../content/site";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
@@ -65,15 +64,12 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                             }}
                         >
                             <Card hoverEffect className="h-full flex flex-col bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] p-0 overflow-hidden group">
-                                <div className="aspect-video relative overflow-hidden bg-foreground/5">
-                                    <Image
-                                        src={project.image}
-                                        alt={locale === "en" ? project.title.en : project.title.es}
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-nebula-primary/20 group-hover:bg-transparent transition-colors duration-500" />
+                                {/* Icon + gradient header */}
+                                <div className="relative h-36 overflow-hidden bg-linear-to-br from-nebula-primary/15 to-foreground/5 border-b border-foreground/10 flex items-center justify-center">
+                                    <div className="absolute top-0 right-0 w-40 h-40 bg-nebula-accent/10 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
+                                    <div className="relative inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
+                                        <project.icon className="w-7 h-7" />
+                                    </div>
 
                                     {/* Overlay ID */}
                                     <div className="absolute top-4 right-4 px-2 py-1 bg-background/70 backdrop-blur-md border border-foreground/10 rounded text-[10px] font-mono text-muted-foreground">
