@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
@@ -9,16 +9,30 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { siteConfig } from "../../../content/site";
+import { SITE_URL, buildMetadata, pageMeta, asLocale } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-sans' });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-display' });
 
-export const metadata: Metadata = {
-  title: "Richard Pedraza | Full-Stack Developer & Automation Engineer",
-  description: "Portfolio of Richard Pedraza - AI-enabled systems that scale and deliver ROI.",
-  icons: {
-    icon: "/favicon.svg",
-  },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const meta = pageMeta.home[asLocale(locale)];
+  return {
+    ...buildMetadata({ locale: asLocale(locale), ...meta }),
+    icons: { icon: "/favicon.svg" },
+  };
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F8F9FD" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0E10" },
+  ],
 };
 
 export default async function RootLayout({
@@ -39,6 +53,35 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  const lang = asLocale(locale);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: siteConfig.profile.name,
+        url: `${SITE_URL}/${lang}`,
+        jobTitle: siteConfig.profile.role[lang].split("|")[0].trim(),
+        description: siteConfig.profile.differentiator[lang],
+        sameAs: [
+          siteConfig.profile.links.linkedin,
+          siteConfig.profile.links.github,
+          siteConfig.profile.links.medium,
+        ],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE_URL}/#service`,
+        name: siteConfig.consulting.title[lang],
+        description: siteConfig.consulting.pitch[lang],
+        url: `${SITE_URL}/${lang}/contact`,
+        provider: { "@id": `${SITE_URL}/#person` },
+        areaServed: "Worldwide",
+      },
+    ],
+  };
+
   return (
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <head>
@@ -47,6 +90,10 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased selection:bg-nebula-accent/30 selection:text-nebula-accent relative" suppressHydrationWarning>

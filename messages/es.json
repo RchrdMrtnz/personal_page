@@ -28,7 +28,14 @@
         "name": "Nombre",
         "email": "Email",
         "message": "Mensaje",
-        "submit": "Enviar Mensaje"
+        "namePlaceholder": "Tu nombre",
+        "emailPlaceholder": "tu@email.com",
+        "messagePlaceholder": "Contame sobre tu proyecto o necesidad…",
+        "submit": "Enviar Mensaje",
+        "sending": "Enviando…",
+        "success": "¡Mensaje enviado! Te responderé pronto.",
+        "error": "Algo salió mal. Probá de nuevo o escribime directo.",
+        "directTitle": "O contactame directo"
     },
     "Footer": {
         "rights": "Todos los derechos reservados."

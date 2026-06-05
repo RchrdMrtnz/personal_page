@@ -114,10 +114,10 @@ export default function Hero({ locale }: { locale: string }) {
                         </motion.div>
                     </div>
 
-                    {/* ── Right Panel: Metric Cards ── hidden on mobile */}
+                    {/* ── Right Panel: Metric Cards ── */}
                     <motion.div
                         variants={{ hidden: { opacity: 0, x: 16 }, visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.3 } } }}
-                        className="hidden sm:block relative lg:order-last"
+                        className="relative w-full lg:order-last"
                     >
                         {/* Subtle glow behind cards */}
                         <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-nebula-accent/5 blur-3xl rounded-full" />

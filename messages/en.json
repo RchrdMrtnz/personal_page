@@ -28,7 +28,14 @@
         "name": "Name",
         "email": "Email",
         "message": "Message",
-        "submit": "Send Message"
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "you@email.com",
+        "messagePlaceholder": "Tell me about your project or need…",
+        "submit": "Send Message",
+        "sending": "Sending…",
+        "success": "Message sent! I'll get back to you soon.",
+        "error": "Something went wrong. Try again or reach me directly.",
+        "directTitle": "Or reach me directly"
     },
     "Footer": {
         "rights": "All rights reserved."

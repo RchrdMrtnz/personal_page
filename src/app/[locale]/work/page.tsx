@@ -1,8 +1,19 @@
+import type { Metadata } from "next";
 import { siteConfig } from "../../../../content/site";
 import { getTranslations } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
 import { ArrowUpRight, CheckCircle2, Layers, Zap } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
+import { buildMetadata, pageMeta, asLocale } from "@/lib/seo";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return buildMetadata({ locale: asLocale(locale), ...pageMeta.work[asLocale(locale)] });
+}
 
 export default async function WorkPage({
     params

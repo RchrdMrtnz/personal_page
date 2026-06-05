@@ -4,6 +4,18 @@ import { Card } from "@/components/ui/Card";
 import { Mail, Send } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 import { ConsultingSection } from "@/components/sections/ConsultingSection";
+import { ContactForm } from "@/components/sections/ContactForm";
+import type { Metadata } from "next";
+import { buildMetadata, pageMeta, asLocale } from "@/lib/seo";
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+    const { locale } = await params;
+    return buildMetadata({ locale: asLocale(locale), ...pageMeta.contact[asLocale(locale)] });
+}
 
 export default async function ContactPage({
     params
@@ -35,80 +47,73 @@ export default async function ContactPage({
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    {/* Email Card */}
-                    <a
-                        href={siteConfig.profile.links.email}
-                        className="group relative block"
-                    >
-                        <Card className="h-full p-8 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)]">
-                            <div className="flex flex-col h-full items-center text-center">
-                                <div className="mb-6">
-                                    <div className="inline-flex p-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
-                                        <Mail className="w-8 h-8" />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="text-xs uppercase tracking-widest text-muted font-mono">Email</div>
-                                    <div className="text-lg text-foreground font-medium group-hover:text-nebula-accent transition-colors">
-                                        rchrd.pdrz.mrtnz@gmail.com
-                                    </div>
-                                </div>
-                            </div>
-                        </Card>
-                    </a>
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 max-w-6xl mx-auto items-start">
+                    {/* Contact form — primary action */}
+                    <div className="lg:col-span-3">
+                        <ContactForm locale={locale} />
+                    </div>
 
-                    {/* LinkedIn Card */}
-                    <a
-                        href={siteConfig.profile.links.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative block"
-                    >
-                        <Card className="h-full p-8 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)]">
-                            <div className="flex flex-col h-full items-center text-center">
-                                <div className="mb-6">
-                                    <div className="inline-flex p-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
-                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8" aria-hidden="true">
+                    {/* Direct contact methods — secondary */}
+                    <div className="lg:col-span-2 space-y-4">
+                        <div className="text-xs uppercase tracking-widest text-muted font-mono px-1">
+                            {t("directTitle")}
+                        </div>
+
+                        {/* Email */}
+                        <a href={siteConfig.profile.links.email} className="group block">
+                            <Card className="p-5 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300">
+                                <div className="flex items-center gap-4">
+                                    <div className="inline-flex p-3 rounded-xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <div className="text-xs uppercase tracking-widest text-muted font-mono">Email</div>
+                                        <div className="text-sm text-foreground font-medium truncate group-hover:text-nebula-accent transition-colors">
+                                            rchrd.pdrz.mrtnz@gmail.com
+                                        </div>
+                                    </div>
+                                </div>
+                            </Card>
+                        </a>
+
+                        {/* LinkedIn */}
+                        <a href={siteConfig.profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="group block">
+                            <Card className="p-5 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300">
+                                <div className="flex items-center gap-4">
+                                    <div className="inline-flex p-3 rounded-xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
                                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                                             <rect width="4" height="12" x="2" y="9"/>
                                             <circle cx="4" cy="4" r="2"/>
                                         </svg>
                                     </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <div className="text-xs uppercase tracking-widest text-muted font-mono">LinkedIn</div>
-                                    <div className="text-lg text-foreground font-medium group-hover:text-nebula-accent transition-colors">
-                                        in/rchrd-pdrz1993
+                                    <div className="min-w-0">
+                                        <div className="text-xs uppercase tracking-widest text-muted font-mono">LinkedIn</div>
+                                        <div className="text-sm text-foreground font-medium truncate group-hover:text-nebula-accent transition-colors">
+                                            in/rchrd-pdrz1993
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Card>
-                    </a>
+                            </Card>
+                        </a>
 
-                    {/* Telegram Card */}
-                    <a
-                        href={siteConfig.profile.links.telegram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group relative block"
-                    >
-                        <Card className="h-full p-8 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)]">
-                            <div className="flex flex-col h-full items-center text-center">
-                                <div className="mb-6">
-                                    <div className="inline-flex p-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
-                                        <Send className="w-8 h-8" />
+                        {/* Telegram */}
+                        <a href={siteConfig.profile.links.telegram} target="_blank" rel="noopener noreferrer" className="group block">
+                            <Card className="p-5 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 hover:bg-foreground/5 transition-all duration-300">
+                                <div className="flex items-center gap-4">
+                                    <div className="inline-flex p-3 rounded-xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300">
+                                        <Send className="w-5 h-5" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <div className="text-xs uppercase tracking-widest text-muted font-mono">Telegram</div>
+                                        <div className="text-sm text-foreground font-medium truncate group-hover:text-nebula-accent transition-colors">
+                                            {locale === "en" ? "Send a message" : "Enviar mensaje"}
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <div className="text-xs uppercase tracking-widest text-muted font-mono">Telegram</div>
-                                    <div className="text-lg text-foreground font-medium group-hover:text-nebula-accent transition-colors">
-                                        {locale === "en" ? "Send a message" : "Enviar mensaje"}
-                                    </div>
-                                </div>
-                            </div>
-                        </Card>
-                    </a>
+                            </Card>
+                        </a>
+                    </div>
                 </div>
 
                 <ConsultingSection locale={locale} />
