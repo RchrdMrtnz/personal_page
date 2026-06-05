@@ -20,7 +20,9 @@
         "servicesSubtitle": "Building intelligent infrastructure that drives efficiency.",
         "viewAllProjects": "View all projects",
         "problemApproach": "Problem & Approach",
-        "keyResults": "Key Results"
+        "keyResults": "Key Results",
+        "overview": "Overview",
+        "impact": "Impact"
     },
     "Contact": {
         "title": "Let's Talk",

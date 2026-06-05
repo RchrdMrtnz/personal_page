@@ -5,13 +5,38 @@ import { motion } from "framer-motion";
 import { siteConfig } from "../../../content/site";
 import { Card } from "@/components/ui/Card";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
-import { Code2, Layers, Cloud, Sparkles } from "lucide-react";
+import { Code2, Layers, Cloud, Sparkles, Database, Infinity as InfinityIcon, Waypoints, Search } from "lucide-react";
+import {
+    SiPython, SiNodedotjs, SiTypescript, SiDjango, SiFastapi,
+    SiNestjs, SiExpress, SiDocker, SiJenkins, SiOpenai, SiDeepgram,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
 
 const categoryIcons: Record<string, React.ElementType> = {
     languages: Code2,
-    frameworks: Layers,
+    backend: Layers,
     cloud: Cloud,
     ai: Sparkles,
+};
+
+// Brand logos per technology; lucide fallbacks for items without a brand mark.
+const skillIcons: Record<string, React.ElementType> = {
+    "Python": SiPython,
+    "Node.js": SiNodedotjs,
+    "TypeScript": SiTypescript,
+    "SQL": Database,
+    "Django / DRF": SiDjango,
+    "FastAPI": SiFastapi,
+    "NestJS": SiNestjs,
+    "Express.js": SiExpress,
+    "AWS": FaAws,
+    "Docker": SiDocker,
+    "Jenkins": SiJenkins,
+    "CI/CD": InfinityIcon,
+    "Pipecat": Waypoints,
+    "LLMs / GPT-4.1": SiOpenai,
+    "Deepgram": SiDeepgram,
+    "Vector Search": Search,
 };
 
 export default function TechStackSection({ locale }: { locale: string }) {
@@ -76,14 +101,18 @@ export default function TechStackSection({ locale }: { locale: string }) {
 
                                     {/* Skills as pills */}
                                     <div className="flex flex-wrap gap-2">
-                                        {cat.skills.map((skill) => (
-                                            <span
-                                                key={skill}
-                                                className={`text-xs font-medium px-2.5 py-1 rounded-full ${cat.bgColor} ${cat.color}`}
-                                            >
-                                                {skill}
-                                            </span>
-                                        ))}
+                                        {cat.skills.map((skill) => {
+                                            const SkillIcon = skillIcons[skill];
+                                            return (
+                                                <span
+                                                    key={skill}
+                                                    className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${cat.bgColor} ${cat.color}`}
+                                                >
+                                                    {SkillIcon && <SkillIcon className="w-3.5 h-3.5 shrink-0" />}
+                                                    {skill}
+                                                </span>
+                                            );
+                                        })}
                                     </div>
                                 </Card>
                             </motion.div>

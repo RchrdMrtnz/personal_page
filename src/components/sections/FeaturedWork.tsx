@@ -97,13 +97,16 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                                         ))}
                                     </div>
 
-                                    <div className="pt-4 border-t border-foreground/10 mt-auto">
-                                        <div className="flex items-center gap-2">
-                                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
-                                            <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm font-mono tracking-tight">
-                                                {locale === "en" ? project.stats.en : project.stats.es}
+                                    <div className="pt-4 border-t border-foreground/10 mt-auto flex items-center justify-between gap-2">
+                                        <span className="text-[11px] font-mono uppercase tracking-widest text-muted/70">
+                                            {locale === "en" ? project.category.en : project.category.es}
+                                        </span>
+                                        {project.metric && (
+                                            <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm font-mono tracking-tight">
+                                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                                                {locale === "en" ? project.metric.en : project.metric.es}
                                             </span>
-                                        </div>
+                                        )}
                                     </div>
                                 </div>
                             </Card>

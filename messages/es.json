@@ -20,7 +20,9 @@
         "servicesSubtitle": "Construyendo infraestructura inteligente que impulsa la eficiencia.",
         "viewAllProjects": "Ver todos los proyectos",
         "problemApproach": "Problema y Enfoque",
-        "keyResults": "Resultados Clave"
+        "keyResults": "Resultados Clave",
+        "overview": "Resumen",
+        "impact": "Impacto"
     },
     "Contact": {
         "title": "Hablemos",
