@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
 import { siteConfig } from "../../../../content/site";
 import { Card } from "@/components/ui/Card";
 import { Mail, Send, Clock } from "lucide-react";
@@ -23,6 +24,11 @@ export default async function ContactPage({
 }) {
     const { locale } = await params;
     const t = await getTranslations("Contact");
+
+    // Detect the visitor's country from Vercel's geo header (falls back to US locally / elsewhere).
+    const headerList = await headers();
+    const country = headerList.get("x-vercel-ip-country");
+    const defaultCountry = country ? country.toLowerCase() : "us";
 
     return (
         <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 min-h-screen flex items-center relative overflow-hidden">
@@ -49,7 +55,7 @@ export default async function ContactPage({
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 max-w-5xl mx-auto items-start">
                     {/* Contact form — primary action */}
                     <div className="lg:col-span-3">
-                        <ContactForm locale={locale} />
+                        <ContactForm locale={locale} defaultCountry={defaultCountry} />
                     </div>
 
                     {/* Direct contact methods — secondary */}

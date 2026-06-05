@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
@@ -16,10 +18,18 @@ const ERROR_KEYS: Record<string, string> = {
     rate_limited: "errorRate",
 };
 
-export function ContactForm({ locale }: { locale: string }) {
+export function ContactForm({
+    locale,
+    defaultCountry = "us",
+}: {
+    locale: string;
+    /** ISO2 country (lowercase) detected from the visitor's request; seeds the phone selector. */
+    defaultCountry?: string;
+}) {
     const t = useTranslations("Contact");
     const [status, setStatus] = useState<Status>("idle");
     const [errorMsg, setErrorMsg] = useState<string>("");
+    const [phone, setPhone] = useState("");
     const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
 
     const handleChange = (
@@ -37,7 +47,8 @@ export function ContactForm({ locale }: { locale: string }) {
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...form, locale }),
+                // Only send a phone if the visitor typed more than the dial code.
+                body: JSON.stringify({ ...form, phone: phone.replace(/\D/g, "").length > 4 ? phone : "", locale }),
             });
 
             if (!res.ok) {
@@ -50,6 +61,7 @@ export function ContactForm({ locale }: { locale: string }) {
 
             setStatus("success");
             setForm({ name: "", email: "", message: "", company: "" });
+            setPhone("");
         } catch {
             setErrorMsg(t("error"));
             setStatus("error");
@@ -109,6 +121,21 @@ export function ContactForm({ locale }: { locale: string }) {
                             onChange={handleChange}
                             placeholder={t("emailPlaceholder")}
                             className={inputClass}
+                        />
+                    </div>
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-foreground">
+                        {t("phone")} <span className="text-muted font-normal">{t("optional")}</span>
+                    </label>
+                    <div className="phone-input-wrapper">
+                        <PhoneInput
+                            defaultCountry={defaultCountry}
+                            value={phone}
+                            onChange={(value) => setPhone(value)}
+                            inputProps={{ id: "phone", name: "phone", autoComplete: "tel" }}
+                            inputClassName="!text-foreground placeholder:!text-muted/60"
                         />
                     </div>
                 </div>

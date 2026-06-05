@@ -64,6 +64,7 @@ export async function POST(req: NextRequest) {
     const name = typeof body.name === "string" ? body.name.trim() : "";
     const email = typeof body.email === "string" ? body.email.trim() : "";
     const message = typeof body.message === "string" ? body.message.trim() : "";
+    const phone = typeof body.phone === "string" ? body.phone.trim().slice(0, 32) : "";
     const locale = body.locale === "es" ? "es" : "en";
 
     if (!name || !email || !message) {
@@ -92,6 +93,7 @@ export async function POST(req: NextRequest) {
         `📬 <b>New contact message</b>\n\n` +
         `<b>Name:</b> ${escapeHtml(name)}\n` +
         `<b>Email:</b> ${escapeHtml(email)}\n` +
+        (phone ? `<b>Phone:</b> ${escapeHtml(phone)}\n` : "") +
         `<b>Lang:</b> ${locale}\n\n` +
         `<b>Message:</b>\n${escapeHtml(message)}`;
 

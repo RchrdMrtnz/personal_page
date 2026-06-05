@@ -119,3 +119,57 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
 }
+
+/* International phone input — themed to the Nebula tokens */
+.phone-input-wrapper {
+  --react-international-phone-height: 46px;
+  --react-international-phone-border-radius: 12px;
+  --react-international-phone-border-color: var(--border);
+  --react-international-phone-background-color: transparent;
+  --react-international-phone-text-color: var(--foreground);
+  --react-international-phone-font-size: 0.95rem;
+  --react-international-phone-country-selector-background-color: transparent;
+  --react-international-phone-country-selector-background-color-hover: color-mix(in srgb, var(--foreground) 6%, transparent);
+  --react-international-phone-dropdown-item-background-color: var(--surface);
+  --react-international-phone-dropdown-item-text-color: var(--foreground);
+  --react-international-phone-dropdown-item-background-color-hover: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --react-international-phone-selected-dropdown-item-background-color: color-mix(in srgb, var(--nebula-accent) 14%, transparent);
+}
+
+.phone-input-wrapper .react-international-phone-input-container {
+  display: flex;
+  width: 100%;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.phone-input-wrapper .react-international-phone-country-selector-button,
+.phone-input-wrapper .react-international-phone-input {
+  background: transparent;
+  border: none;
+  height: 44px;
+}
+
+.phone-input-wrapper .react-international-phone-input {
+  flex: 1;
+  border-radius: 0 12px 12px 0;
+}
+
+.phone-input-wrapper .react-international-phone-country-selector-button {
+  border-radius: 12px 0 0 12px;
+  padding-left: 10px;
+}
+
+.phone-input-wrapper .react-international-phone-input-container:focus-within {
+  border-color: color-mix(in srgb, var(--nebula-accent) 50%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--nebula-accent) 20%, transparent);
+}
+
+.phone-input-wrapper .react-international-phone-country-selector-dropdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lift);
+  z-index: 50;
+}

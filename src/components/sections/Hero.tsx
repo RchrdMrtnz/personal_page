@@ -176,8 +176,9 @@ function MetricCard({ metric, index }: { metric: HeroMetric; index: number }) {
     return (
         <motion.div
             animate={{ y: [0, -7, 0] }}
-            transition={{ duration: 4 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
+            transition={{ duration: 4 + index * 0.4, repeat: Infinity, ease: "easeInOut", delay: 1.6 + index * 0.2 }}
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            style={{ willChange: "transform" }}
         >
             <Card className="bg-surface dark:bg-nebula-ink/40 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 transition-all duration-300 p-4 h-full">
                 <div className="flex items-start justify-between mb-3">
@@ -191,7 +192,7 @@ function MetricCard({ metric, index }: { metric: HeroMetric; index: number }) {
 
                 <div className="space-y-0.5 mb-3">
                     <p className="font-mono text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-                        <AnimatedCounter value={metric.value} />
+                        <AnimatedCounter value={metric.value} delay={index * 0.12} />
                     </p>
                     <p className="text-[11px] text-muted line-clamp-1">{metric.label}</p>
                 </div>

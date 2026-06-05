@@ -27,6 +27,8 @@
         "subtitle": "¿Listo para automatizar y escalar?",
         "name": "Nombre",
         "email": "Email",
+        "phone": "Teléfono",
+        "optional": "(opcional)",
         "message": "Mensaje",
         "namePlaceholder": "Tu nombre",
         "emailPlaceholder": "tu@email.com",

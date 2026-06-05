@@ -27,6 +27,8 @@
         "subtitle": "Ready to automate and scale?",
         "name": "Name",
         "email": "Email",
+        "phone": "Phone",
+        "optional": "(optional)",
         "message": "Message",
         "namePlaceholder": "Your name",
         "emailPlaceholder": "you@email.com",
