@@ -35,7 +35,13 @@
         "sending": "Enviando…",
         "success": "¡Mensaje enviado! Te responderé pronto.",
         "error": "Algo salió mal. Probá de nuevo o escribime directo.",
-        "directTitle": "O contactame directo"
+        "errorRequired": "Completá todos los campos.",
+        "errorEmail": "Revisá tu email, no parece válido.",
+        "errorShort": "El mensaje es muy corto, contame un poco más.",
+        "errorRate": "Demasiados intentos. Probá de nuevo en un rato.",
+        "directTitle": "O contactame directo",
+        "available": "Disponible para nuevos proyectos",
+        "responseNote": "Suelo responder dentro de las 24 horas."
     },
     "Footer": {
         "rights": "Todos los derechos reservados."

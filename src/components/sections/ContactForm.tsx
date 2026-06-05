@@ -8,9 +8,18 @@ import { Button } from "@/components/ui/Button";
 
 type Status = "idle" | "sending" | "success" | "error";
 
+// Map server error codes → translation keys for specific feedback.
+const ERROR_KEYS: Record<string, string> = {
+    missing_fields: "errorRequired",
+    invalid_email: "errorEmail",
+    message_too_short: "errorShort",
+    rate_limited: "errorRate",
+};
+
 export function ContactForm({ locale }: { locale: string }) {
     const t = useTranslations("Contact");
     const [status, setStatus] = useState<Status>("idle");
+    const [errorMsg, setErrorMsg] = useState<string>("");
     const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
 
     const handleChange = (
@@ -19,7 +28,7 @@ export function ContactForm({ locale }: { locale: string }) {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (status === "sending") return;
         setStatus("sending");
@@ -31,11 +40,18 @@ export function ContactForm({ locale }: { locale: string }) {
                 body: JSON.stringify({ ...form, locale }),
             });
 
-            if (!res.ok) throw new Error("request_failed");
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                const key = ERROR_KEYS[data?.error as string] ?? "error";
+                setErrorMsg(t(key));
+                setStatus("error");
+                return;
+            }
 
             setStatus("success");
             setForm({ name: "", email: "", message: "", company: "" });
         } catch {
+            setErrorMsg(t("error"));
             setStatus("error");
         }
     };
@@ -46,7 +62,7 @@ export function ContactForm({ locale }: { locale: string }) {
 
     return (
         <Card className="p-6 sm:p-8 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10">
-            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Honeypot — hidden from users, catches bots */}
                 <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="company">Company</label>
@@ -105,6 +121,7 @@ export function ContactForm({ locale }: { locale: string }) {
                         id="message"
                         name="message"
                         required
+                        minLength={5}
                         rows={5}
                         maxLength={4000}
                         value={form.message}
@@ -139,7 +156,7 @@ export function ContactForm({ locale }: { locale: string }) {
                         {status === "error" && (
                             <span className="inline-flex items-center gap-2 text-red-500">
                                 <AlertCircle className="w-4 h-4" />
-                                {t("error")}
+                                {errorMsg || t("error")}
                             </span>
                         )}
                     </div>

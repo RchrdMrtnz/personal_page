@@ -69,11 +69,14 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !message) {
         return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
     }
-    if (name.length > MAX_NAME || email.length > MAX_EMAIL || message.length > MAX_MESSAGE) {
-        return NextResponse.json({ ok: false, error: "too_long" }, { status: 400 });
+    if (!isValidEmail(email) || email.length > MAX_EMAIL) {
+        return NextResponse.json({ ok: false, error: "invalid_email" }, { status: 400 });
     }
-    if (message.length < MIN_MESSAGE || !isValidEmail(email)) {
-        return NextResponse.json({ ok: false, error: "invalid_fields" }, { status: 400 });
+    if (message.length < MIN_MESSAGE) {
+        return NextResponse.json({ ok: false, error: "message_too_short" }, { status: 400 });
+    }
+    if (name.length > MAX_NAME || message.length > MAX_MESSAGE) {
+        return NextResponse.json({ ok: false, error: "too_long" }, { status: 400 });
     }
 
     const ip =

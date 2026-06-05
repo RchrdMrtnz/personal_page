@@ -35,7 +35,13 @@
         "sending": "Sending…",
         "success": "Message sent! I'll get back to you soon.",
         "error": "Something went wrong. Try again or reach me directly.",
-        "directTitle": "Or reach me directly"
+        "errorRequired": "Please fill in all fields.",
+        "errorEmail": "Your email doesn't look valid.",
+        "errorShort": "Your message is too short, tell me a bit more.",
+        "errorRate": "Too many attempts. Please try again later.",
+        "directTitle": "Or reach me directly",
+        "available": "Available for new projects",
+        "responseNote": "I usually reply within 24 hours."
     },
     "Footer": {
         "rights": "All rights reserved."
