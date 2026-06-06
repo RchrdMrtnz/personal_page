@@ -11,6 +11,9 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
     const projects = siteConfig.caseStudies;
     const scrollerRef = useRef<HTMLDivElement>(null);
     const [active, setActive] = useState(0);
+    const [paused, setPaused] = useState(false);
+
+    const AUTOPLAY_MS = 6000;
 
     const updateActive = useCallback(() => {
         const el = scrollerRef.current;
@@ -38,8 +41,26 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
         return () => el.removeEventListener("scroll", updateActive);
     }, [updateActive]);
 
+    // Auto-advance: paused on hover/focus, respects reduced-motion, loops, and the
+    // timer resets whenever `active` changes (so manual nav doesn't trigger an instant jump).
+    useEffect(() => {
+        if (paused) return;
+        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const id = setTimeout(() => {
+            scrollTo(active >= projects.length - 1 ? 0 : active + 1);
+        }, AUTOPLAY_MS);
+        return () => clearTimeout(id);
+    }, [active, paused, scrollTo, projects.length]);
+
     return (
-        <div>
+        <div
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
+            }}
+        >
             {/* Controls: counter + arrows */}
             <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-sm text-muted tabular-nums">
