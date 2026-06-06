@@ -120,6 +120,15 @@ body {
   border: 1px solid var(--border);
 }
 
+/* Hide scrollbar while keeping scroll (used by the projects carousel) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* International phone input — themed to the Nebula tokens */
 .phone-input-wrapper {
   --react-international-phone-height: 46px;
