@@ -32,9 +32,12 @@ export function GridPulse() {
             const n = parseInt(full || "3d4dff", 16);
             return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
         };
-        const readAccent = () =>
-            getComputedStyle(document.documentElement).getPropertyValue("--nebula-accent").trim() || "#3D4DFF";
-        let rgb = hexToRgb(readAccent());
+        // Use the neutral "muted" token (adapts to light/dark) for a soft gray, low-key look.
+        const readColor = () => {
+            const v = getComputedStyle(document.documentElement).getPropertyValue("--muted").trim();
+            return v || "#9CA3AF";
+        };
+        let rgb = hexToRgb(readColor());
 
         let w = 0, h = 0;
         const resize = () => {
@@ -111,10 +114,10 @@ export function GridPulse() {
                 p.trail.push({ x, y });
                 if (p.trail.length > TRAIL) p.trail.shift();
 
-                // Fading trail
-                ctx.lineWidth = 1.4;
+                // Fading trail (thin, low-opacity)
+                ctx.lineWidth = 0.8;
                 for (let i = 1; i < p.trail.length; i++) {
-                    const a = (i / p.trail.length) * 0.45;
+                    const a = (i / p.trail.length) * 0.18;
                     ctx.strokeStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${a})`;
                     ctx.beginPath();
                     ctx.moveTo(p.trail[i - 1].x, p.trail[i - 1].y);
@@ -122,13 +125,13 @@ export function GridPulse() {
                     ctx.stroke();
                 }
 
-                // Glowing head
-                const grad = ctx.createRadialGradient(x, y, 0, x, y, 6);
-                grad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},0.85)`);
+                // Soft head (half size, diffused)
+                const grad = ctx.createRadialGradient(x, y, 0, x, y, 3);
+                grad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},0.35)`);
                 grad.addColorStop(1, `rgba(${rgb.r},${rgb.g},${rgb.b},0)`);
                 ctx.fillStyle = grad;
                 ctx.beginPath();
-                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.arc(x, y, 3, 0, Math.PI * 2);
                 ctx.fill();
             }
         };
@@ -151,7 +154,7 @@ export function GridPulse() {
             else ctx.clearRect(0, 0, w, h);
         };
         const themeObserver = new MutationObserver(() => {
-            rgb = hexToRgb(readAccent());
+            rgb = hexToRgb(readColor());
         });
 
         document.addEventListener("visibilitychange", onVisibility);
