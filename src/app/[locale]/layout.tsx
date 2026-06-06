@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { GridPulse } from "@/components/ui/GridPulse";
 import { siteConfig } from "../../../content/site";
 import { SITE_URL, buildMetadata, pageMeta, asLocale } from "@/lib/seo";
 
@@ -107,6 +108,9 @@ export default async function RootLayout({
         >
           <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-nebula-primary/10 dark:bg-nebula-primary/20 opacity-20 blur-[100px]" />
         </div>
+
+        {/* Animated pulses traveling along the grid lines */}
+        <GridPulse />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
