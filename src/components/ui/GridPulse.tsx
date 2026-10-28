@@ -20,7 +20,8 @@ export function GridPulse() {
         if (!ctx) return;
 
         const CELL = 24; // matches the global CSS grid size
-        const COUNT = 14;
+        // Scale with screen area: 14 on desktop, ~6 on a phone (same density, less work).
+        const COUNT = Math.round(Math.min(14, Math.max(6, (window.innerWidth * window.innerHeight) / 90000)));
         const TRAIL = 18;
         const TURN_CHANCE = 0.18;
 
@@ -76,7 +77,7 @@ export function GridPulse() {
             };
         };
 
-        let pulses = Array.from({ length: COUNT }, spawn);
+        const pulses = Array.from({ length: COUNT }, spawn);
 
         let raf = 0;
         let last = 0;

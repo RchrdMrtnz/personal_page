@@ -1,17 +1,37 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { siteConfig } from "../../content/site";
+import { Link } from "@/i18n/routing";
+import { loc } from "@/lib/content";
 import { Mail } from "lucide-react";
 
 export default function Footer() {
     const t = useTranslations("Footer");
+    const tNav = useTranslations("Navigation");
+    const locale = useLocale();
 
     return (
         <footer className="bg-background border-t border-foreground/10 py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Service links — internal linking for the service landing pages */}
+                <nav aria-label={tNav("services")} className="flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-1 mb-8 pb-8 border-b border-foreground/10 text-sm">
+                    <Link href="/services" className="py-2 font-medium text-foreground hover:text-nebula-accent transition-colors">
+                        {tNav("services")}
+                    </Link>
+                    {siteConfig.services.map((service) => (
+                        <Link
+                            key={service.slug}
+                            href={`/services/${service.slug}`}
+                            className="py-2 text-muted hover:text-nebula-accent transition-colors"
+                        >
+                            {loc(service.seoTitle, locale)}
+                        </Link>
+                    ))}
+                </nav>
+
                 <div className="flex flex-col md:flex-row justify-between items-center">
-                    <div className="mb-4 md:mb-0">
+                    <div className="mb-4 md:mb-0 text-center md:text-left">
                         <span className="text-xl font-bold text-foreground tracking-tight font-display">
                             Richard Pedraza<span className="text-nebula-accent">.</span>
                         </span>
@@ -20,13 +40,14 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    <div className="flex space-x-6">
+                    {/* p-2.5 → 40px tap targets on mobile; gap keeps the old 24px icon spacing */}
+                    <div className="flex gap-1">
                         <a
                             href={siteConfig.profile.links.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="LinkedIn profile"
-                            className="text-muted hover:text-nebula-accent transition-colors"
+                            className="p-2.5 text-muted hover:text-nebula-accent transition-colors"
                         >
                             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
                                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -38,7 +59,7 @@ export default function Footer() {
                             href={siteConfig.profile.links.medium}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-muted hover:text-nebula-accent transition-colors"
+                            className="p-2.5 text-muted hover:text-nebula-accent transition-colors"
                         >
                             <span className="sr-only">Medium</span>
                             <svg
@@ -54,7 +75,7 @@ export default function Footer() {
                         <a
                             href={siteConfig.profile.links.email}
                             aria-label="Send email"
-                            className="text-muted hover:text-nebula-accent transition-colors"
+                            className="p-2.5 text-muted hover:text-nebula-accent transition-colors"
                         >
                             <Mail size={20} />
                         </a>

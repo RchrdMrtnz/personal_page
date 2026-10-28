@@ -20,6 +20,7 @@ export default function LanguageSwitcher() {
     return (
         <label className="relative inline-flex items-center">
             <select
+                aria-label="Language / Idioma"
                 defaultValue={locale}
                 className="bg-transparent py-1 pl-2 pr-6 text-sm font-medium text-muted hover:text-foreground focus:outline-none cursor-pointer appearance-none"
                 onChange={onSelectChange}

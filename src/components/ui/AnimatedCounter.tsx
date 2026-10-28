@@ -35,11 +35,16 @@ export function AnimatedCounter({ value, className, delay = 0 }: AnimatedCounter
         return () => controls.stop();
     }, [inView, number, delay, count]);
 
+    // The animated digits start at 0 in the server HTML, so expose the real value
+    // as text for crawlers, link previews and screen readers.
     return (
         <span ref={ref} className={className}>
-            {prefix}
-            <motion.span>{display}</motion.span>
-            {suffix}
+            <span className="sr-only">{value}</span>
+            <span aria-hidden="true">
+                {prefix}
+                <motion.span>{display}</motion.span>
+                {suffix}
+            </span>
         </span>
     );
 }

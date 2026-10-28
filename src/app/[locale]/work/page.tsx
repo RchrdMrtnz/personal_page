@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 import { ProjectsCarousel } from "@/components/sections/ProjectsCarousel";
-import { buildMetadata, pageMeta, asLocale } from "@/lib/seo";
+import { buildMetadata, pageMeta, asLocale, breadcrumbJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
     params,
@@ -19,6 +20,7 @@ export default async function WorkPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations("Sections");
 
     return (
@@ -28,7 +30,7 @@ export default async function WorkPage({
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="mb-16">
                     <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 font-display">
-                        {t("featuredWork")}
+                        {t("workTitle")}
                     </h1>
                     <p className="text-xl text-muted max-w-2xl leading-relaxed">
                         {locale === "en"
@@ -40,6 +42,8 @@ export default async function WorkPage({
 
                 <ProjectsCarousel locale={locale} />
             </div>
+
+            <JsonLd data={breadcrumbJsonLd(asLocale(locale), [{ name: locale === "es" ? "Proyectos" : "Work", path: "/work" }])} />
         </div>
     );
 }

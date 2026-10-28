@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Navbar from "@/components/Navbar";
@@ -12,9 +12,17 @@ import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { GridPulse } from "@/components/ui/GridPulse";
 import { siteConfig } from "../../../content/site";
 import { SITE_URL, buildMetadata, pageMeta, asLocale } from "@/lib/seo";
+import { getPosts } from "@/lib/blog";
+import { JsonLd } from "@/components/JsonLd";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-sans' });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-display' });
+
+// Pre-render every locale at build time: faster TTFB and the metadata lands in
+// <head> instead of being streamed into <body>.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -26,6 +34,13 @@ export async function generateMetadata({
   return {
     ...buildMetadata({ locale: asLocale(locale), ...meta }),
     icons: { icon: "/favicon.svg" },
+    // Search Console / Bing Webmaster ownership tokens (set in the deploy env).
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+      other: process.env.BING_SITE_VERIFICATION
+        ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+        : undefined,
+    },
   };
 }
 
@@ -50,6 +65,9 @@ export default async function RootLayout({
     notFound();
   }
 
+  // Enables static rendering for next-intl
+  setRequestLocale(locale);
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -59,12 +77,29 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: siteConfig.profile.name,
+        url: `${SITE_URL}/${lang}`,
+        inLanguage: lang,
+        publisher: { "@id": `${SITE_URL}/#person` },
+      },
+      {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: siteConfig.profile.name,
         url: `${SITE_URL}/${lang}`,
+        // A real headshot (profile.photo) beats the generated card once it's set.
+        image: siteConfig.profile.photo
+          ? `${SITE_URL}${siteConfig.profile.photo}`
+          : `${SITE_URL}/${lang}/opengraph-image`,
         jobTitle: siteConfig.profile.role[lang].split("|")[0].trim(),
         description: siteConfig.profile.differentiator[lang],
+        knowsAbout: siteConfig.skillsByCategory.flatMap((c) => c.skills),
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: siteConfig.profile.education.school,
+        },
         sameAs: [
           siteConfig.profile.links.linkedin,
           siteConfig.profile.links.github,
@@ -76,9 +111,10 @@ export default async function RootLayout({
         "@id": `${SITE_URL}/#service`,
         name: siteConfig.consulting.title[lang],
         description: siteConfig.consulting.pitch[lang],
-        url: `${SITE_URL}/${lang}/contact`,
+        url: `${SITE_URL}/${lang}/services`,
         provider: { "@id": `${SITE_URL}/#person` },
         areaServed: "Worldwide",
+        serviceType: siteConfig.services.map((s) => s.title[lang]),
       },
     ],
   };
@@ -92,10 +128,7 @@ export default async function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
       </head>
       <body className="bg-background text-foreground min-h-screen flex flex-col font-sans antialiased selection:bg-nebula-accent/30 selection:text-nebula-accent relative" suppressHydrationWarning>
         {/* Global Background Grid */}
@@ -113,7 +146,7 @@ export default async function RootLayout({
         <GridPulse />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
-            <Navbar />
+            <Navbar showBlog={getPosts(lang).length > 0} />
             <main className="grow">
               {children}
             </main>

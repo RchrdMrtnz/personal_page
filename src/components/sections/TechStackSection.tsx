@@ -48,13 +48,13 @@ export default function TechStackSection({ locale }: { locale: string }) {
     };
 
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 md:py-20 relative overflow-hidden">
             <NebulaBackground />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                 {/* Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ export default function TechStackSection({ locale }: { locale: string }) {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
                 >
                     {siteConfig.skillsByCategory.map((cat) => {
                         const Icon = categoryIcons[cat.id] ?? Code2;
@@ -87,17 +87,17 @@ export default function TechStackSection({ locale }: { locale: string }) {
                             >
                                 <Card
                                     hoverEffect
-                                    className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] transition-all duration-300 p-6"
+                                    className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] transition-all duration-300 p-5 md:p-6"
                                 >
-                                    {/* Icon */}
-                                    <div className={`p-2.5 rounded-lg bg-foreground/5 ring-1 ring-foreground/10 w-fit mb-4 ${cat.color}`}>
-                                        <Icon size={20} />
+                                    {/* Icon + category name (inline on mobile to save height) */}
+                                    <div className="flex items-center gap-3 mb-4 sm:block">
+                                        <div className={`p-2.5 rounded-lg bg-foreground/5 ring-1 ring-foreground/10 w-fit sm:mb-4 ${cat.color}`}>
+                                            <Icon size={20} />
+                                        </div>
+                                        <h3 className="text-base font-semibold text-foreground sm:mb-4 font-display">
+                                            {label}
+                                        </h3>
                                     </div>
-
-                                    {/* Category name */}
-                                    <h3 className="text-base font-semibold text-foreground mb-4 font-display">
-                                        {label}
-                                    </h3>
 
                                     {/* Skills as pills */}
                                     <div className="flex flex-wrap gap-2">

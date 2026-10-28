@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { buttonStyles } from "@/components/ui/Button";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function FeaturedWork({ locale }: { locale: string }) {
@@ -25,11 +25,11 @@ export default function FeaturedWork({ locale }: { locale: string }) {
     };
 
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 md:py-20 relative overflow-hidden">
             <NebulaBackground />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex justify-between items-end mb-12">
+                <div className="flex justify-between items-end mb-8 md:mb-12">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -53,7 +53,7 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8"
                 >
                     {featured.map((project, index) => (
                         <motion.div
@@ -63,9 +63,10 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                                 visible: { opacity: 1, y: 0 }
                             }}
                         >
+                            <Link href={`/work/${project.id}`} className="block h-full rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-nebula-accent/40">
                             <Card hoverEffect className="h-full flex flex-col bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] p-0 overflow-hidden group">
                                 {/* Icon + gradient header */}
-                                <div className="relative h-36 overflow-hidden bg-linear-to-br from-nebula-primary/15 to-foreground/5 border-b border-foreground/10 flex items-center justify-center">
+                                <div className="relative h-28 md:h-36 overflow-hidden bg-linear-to-br from-nebula-primary/15 to-foreground/5 border-b border-foreground/10 flex items-center justify-center">
                                     <div className="absolute top-0 right-0 w-40 h-40 bg-nebula-accent/10 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
                                     <div className="relative inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent group-hover:bg-nebula-accent group-hover:text-white transition-all duration-300 shadow-lg">
                                         <project.icon className="w-7 h-7" />
@@ -90,7 +91,7 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                                         {project.tags.slice(0, 3).map((tag) => (
                                             <div
                                                 key={tag}
-                                                className="px-2 py-1 text-[10px] font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded hover:border-nebula-accent/50 hover:bg-foreground/10 hover:text-foreground transition-colors cursor-default"
+                                                className="px-2 py-1 text-[10px] font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded"
                                             >
                                                 {tag}
                                             </div>
@@ -110,15 +111,14 @@ export default function FeaturedWork({ locale }: { locale: string }) {
                                     </div>
                                 </div>
                             </Card>
+                            </Link>
                         </motion.div>
                     ))}
                 </motion.div>
 
-                <div className="mt-12 text-center md:hidden">
-                    <Link href="/work">
-                        <Button variant="outline" className="w-full">
-                            {t("viewAllProjects")} <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
+                <div className="mt-8 text-center md:hidden">
+                    <Link href="/work" className={buttonStyles({ variant: "outline", className: "w-full" })}>
+                        {t("viewAllProjects")} <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                 </div>
             </div>

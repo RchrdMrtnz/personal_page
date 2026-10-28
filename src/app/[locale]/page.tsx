@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { setRequestLocale } from "next-intl/server";
 import Hero from "@/components/sections/Hero";
 import { buildMetadata, pageMeta, asLocale } from "@/lib/seo";
 
@@ -27,6 +28,7 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="flex flex-col min-h-screen">

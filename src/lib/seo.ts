@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
+// Canonical host (the apex redirects here). Hardcoded on purpose: it only feeds
+// canonical/hreflang/sitemap/robots, which must always name the production
+// domain. Reading it from an env var let a localhost value leak into prod.
+export const SITE_URL = "https://www.rchrdpdrz.com";
 
 export type Locale = "en" | "es";
 
@@ -18,11 +19,16 @@ export function buildMetadata({
     path = "",
     title,
     description,
+    ogType = "website",
+    locales = ["en", "es"],
 }: {
     locale: Locale;
     path?: string;
     title: string;
     description: string;
+    ogType?: "website" | "article";
+    /** Locales this page exists in (a blog post may only be written in one). */
+    locales?: Locale[];
 }): Metadata {
     const url = `${SITE_URL}/${locale}${path}`;
 
@@ -32,14 +38,13 @@ export function buildMetadata({
         description,
         alternates: {
             canonical: url,
-            languages: {
-                en: `${SITE_URL}/en${path}`,
-                es: `${SITE_URL}/es${path}`,
-                "x-default": `${SITE_URL}/en${path}`,
-            },
+            languages: Object.fromEntries([
+                ...locales.map((l) => [l, `${SITE_URL}/${l}${path}`]),
+                ["x-default", `${SITE_URL}/${locales.includes("en") ? "en" : locales[0]}${path}`],
+            ]),
         },
         openGraph: {
-            type: "website",
+            type: ogType,
             url,
             siteName: SITE_NAME,
             title,
@@ -57,48 +62,48 @@ export function buildMetadata({
 
 /** Per-page localized title + description + route path. */
 export const pageMeta: Record<
-    "home" | "work" | "about" | "contact",
+    "home" | "work" | "about" | "contact" | "services" | "blog",
     Record<Locale, { title: string; description: string; path: string }>
 > = {
     home: {
         en: {
-            title: "Richard Pedraza | Full-Stack Developer & Automation Engineer",
+            title: "Richard Pedraza | Senior Backend Engineer · Python & AI",
             description:
-                "Richard Pedraza builds AI-enabled systems and automation that scale and deliver ROI — LLM integrations, workflow automation, data pipelines and backend architecture.",
+                "Senior Backend Engineer with 8+ years in Python, Django, FastAPI and AWS. I build production AI: real-time voice agents, LLM integrations and automation.",
             path: "",
         },
         es: {
-            title: "Richard Pedraza | Full-Stack Developer & Ingeniero de Automatización",
+            title: "Richard Pedraza | Senior Backend Engineer · Python e IA",
             description:
-                "Richard Pedraza construye sistemas con IA y automatización que escalan y generan ROI — integraciones LLM, automatización de flujos, pipelines de datos y arquitectura backend.",
+                "Senior Backend Engineer con 8+ años en Python, Django, FastAPI y AWS. Construyo IA en producción: agentes de voz en tiempo real, integraciones LLM y automatización.",
             path: "",
         },
     },
     work: {
         en: {
-            title: "Work — Case Studies | Richard Pedraza",
+            title: "Backend, AI & Automation Case Studies | Richard Pedraza",
             description:
-                "Selected case studies in high-impact automation and AI system architecture: academic content generation, real-time voice AI, recruitment decision engines and automated video production.",
+                "Case studies in backend architecture and production AI: an insurtech aggregation platform, a real-time AI voice assistant, automated property valuation and more.",
             path: "/work",
         },
         es: {
-            title: "Proyectos — Casos de Estudio | Richard Pedraza",
+            title: "Proyectos de Backend, IA y Automatización | Richard Pedraza",
             description:
-                "Casos de estudio de automatización de alto impacto y arquitectura de sistemas con IA: generación de contenido académico, IA por voz en tiempo real, motores de decisión y producción de video automatizada.",
+                "Casos de estudio de arquitectura backend e IA en producción: plataforma insurtech, asistente de voz con IA en tiempo real, valoración automatizada de propiedades y más.",
             path: "/work",
         },
     },
     about: {
         en: {
-            title: "About | Richard Pedraza",
+            title: "About Richard Pedraza | Senior Backend Engineer",
             description:
-                "Full-Stack & AI Engineer focused on automation, AI integration and operational efficiency. I design architectures that solve business-critical problems with clarity and speed.",
+                "Senior Backend Engineer with 8+ years building with Python, Django, FastAPI and Node.js on AWS. Led AI voice, insurtech and automation projects in production.",
             path: "/about",
         },
         es: {
-            title: "Sobre Mí | Richard Pedraza",
+            title: "Sobre Richard Pedraza | Senior Backend Engineer",
             description:
-                "Ingeniero Full-Stack e IA enfocado en automatización, integración de IA y eficiencia operativa. Diseño arquitecturas que resuelven problemas críticos de negocio con claridad y velocidad.",
+                "Senior Backend Engineer con 8+ años construyendo con Python, Django, FastAPI y Node.js sobre AWS. Lideré proyectos de voz con IA, insurtech y automatización.",
             path: "/about",
         },
     },
@@ -112,11 +117,53 @@ export const pageMeta: Record<
         es: {
             title: "Contacto | Richard Pedraza",
             description:
-                "Hablemos de automatizar y escalar tus operaciones. Enviá un mensaje directo o contactame por email, LinkedIn o Telegram.",
+                "Hablemos de automatizar y escalar tus operaciones. Envía un mensaje directo o contáctame por email, LinkedIn o Telegram.",
             path: "/contact",
         },
     },
+    services: {
+        en: {
+            title: "Backend, AI & Automation Services | Richard Pedraza",
+            description:
+                "AI voice agents, workflow automation with n8n, data pipelines and backend development with Python, Django and AWS. Practical, production-ready systems.",
+            path: "/services",
+        },
+        es: {
+            title: "Servicios de Backend, IA y Automatización | Richard Pedraza",
+            description:
+                "Agentes de voz con IA, automatización con n8n, pipelines de datos y desarrollo backend con Python, Django y AWS. Sistemas prácticos listos para producción.",
+            path: "/services",
+        },
+    },
+    blog: {
+        en: {
+            title: "Blog: Backend, AI & Automation | Richard Pedraza",
+            description:
+                "Articles on backend architecture, production AI and automation, drawn from real projects.",
+            path: "/blog",
+        },
+        es: {
+            title: "Blog: Backend, IA y Automatización | Richard Pedraza",
+            description:
+                "Artículos sobre arquitectura backend, IA en producción y automatización, basados en proyectos reales.",
+            path: "/blog",
+        },
+    },
 };
+
+/** BreadcrumbList structured data; `path` is relative to the locale root. */
+export function breadcrumbJsonLd(locale: Locale, items: { name: string; path: string }[]) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [{ name: locale === "es" ? "Inicio" : "Home", path: "" }, ...items].map((item, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: item.name,
+            item: `${SITE_URL}/${locale}${item.path}`,
+        })),
+    };
+}
 
 /** Normalize an arbitrary locale string to a supported Locale. */
 export function asLocale(locale: string): Locale {

@@ -1,7 +1,9 @@
 {
     "Navigation": {
         "home": "Home",
+        "services": "Services",
         "work": "Work",
+        "blog": "Blog",
         "about": "About",
         "contact": "Contact"
     },
@@ -10,19 +12,59 @@
         "downloadResume": "Download Resume"
     },
     "Sections": {
-        "featuredWork": "Featured Work",
+        "featuredWork": "Featured Case Studies",
+        "workTitle": "Case Studies: Backend, AI & Automation",
         "experience": "Experience",
-        "metrics": "Metrics that Matter",
+        "education": "Education",
+        "metrics": "Impact in Production",
         "playbook": "My Playbook",
-        "techStack": "Tech Stack",
+        "techStack": "Tech Stack: Python, Django, AWS & AI",
         "techStackSub": "My production toolkit",
-        "servicesTitle": "AI + Automation Systems",
+        "servicesTitle": "Backend, AI & Automation Services",
         "servicesSubtitle": "Building intelligent infrastructure that drives efficiency.",
         "viewAllProjects": "View all projects",
+        "viewAllServices": "View all services",
         "problemApproach": "Problem & Approach",
         "keyResults": "Key Results",
         "overview": "Overview",
         "impact": "Impact"
+    },
+    "CaseStudy": {
+        "label": "Case study",
+        "challenge": "The challenge",
+        "solution": "The solution",
+        "results": "Results",
+        "stack": "Stack",
+        "relatedServices": "Related services",
+        "viewCase": "Read the case study",
+        "allCases": "All case studies",
+        "next": "Next case study",
+        "ctaTitle": "Facing a similar challenge?",
+        "ctaText": "Tell me what you need and I'll reply within 24 hours.",
+        "ctaButton": "Let's talk"
+    },
+    "Services": {
+        "eyebrow": "Service",
+        "includes": "What's included",
+        "useCases": "When you need it",
+        "process": "How we work",
+        "caseStudies": "Related case studies",
+        "faq": "FAQ",
+        "problems": "Problems I solve",
+        "consulting": "AI consulting",
+        "learnMore": "Learn more",
+        "allServices": "All services",
+        "ctaTitle": "Let's talk about your project",
+        "ctaText": "We start with a focused technical discovery to find the highest-impact quick wins.",
+        "ctaButton": "Book a discovery call"
+    },
+    "Blog": {
+        "title": "Blog",
+        "subtitle": "Notes on backend architecture, production AI and automation, drawn from real projects.",
+        "readMore": "Read article",
+        "back": "All articles",
+        "minRead": "min read",
+        "draft": "Draft · not published"
     },
     "Contact": {
         "title": "Let's Talk",

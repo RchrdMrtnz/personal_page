@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
 
-export default function Navbar() {
+export default function Navbar({ showBlog = false }: { showBlog?: boolean }) {
     const t = useTranslations("Navigation");
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -17,13 +17,16 @@ export default function Navbar() {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20);
         };
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const navLinks = [
         { href: "/", label: t("home") },
+        { href: "/services", label: t("services") },
         { href: "/work", label: t("work") },
+        // Only linked once there is at least one published post (an empty blog 404s).
+        ...(showBlog ? [{ href: "/blog", label: t("blog") }] : []),
         { href: "/about", label: t("about") },
         { href: "/contact", label: t("contact") },
     ];
@@ -38,13 +41,13 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="shrink-0">
-                        <Link href="/" className="text-xl font-bold text-foreground tracking-tight font-display">
+                        <Link href="/" className="inline-block py-2 text-xl font-bold text-foreground tracking-tight font-display">
                             RP<span className="text-nebula-accent">.</span>
                         </Link>
                     </div>
 
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-center space-x-2">
+                    <div className="hidden lg:block">
+                        <div className="ml-10 flex items-center space-x-1">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
@@ -59,7 +62,7 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <button
                             type="button"
                             onClick={() => setIsOpen(!isOpen)}
@@ -76,7 +79,7 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             {isOpen && (
-                <div id="mobile-menu" className="md:hidden bg-background border-b border-foreground/10">
+                <div id="mobile-menu" className="lg:hidden bg-background border-b border-foreground/10">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <Link

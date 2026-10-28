@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { siteConfig } from "../../../../content/site";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card } from "@/components/ui/Card";
-import { Terminal, User, Target, Briefcase } from "lucide-react";
+import { Terminal, User, Target, Briefcase, GraduationCap } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
-import { buildMetadata, pageMeta, asLocale } from "@/lib/seo";
+import { buildMetadata, pageMeta, asLocale, breadcrumbJsonLd } from "@/lib/seo";
+import { loc, formatPeriod } from "@/lib/content";
+import { JsonLd } from "@/components/JsonLd";
 
 export async function generateMetadata({
     params,
@@ -21,6 +23,7 @@ export default async function AboutPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations("Sections");
 
     return (
@@ -44,12 +47,17 @@ export default async function AboutPage({
                         <Terminal size={16} className="text-muted" />
                         <span className="text-sm font-mono text-muted">bio.txt</span>
                     </div>
-                    <div className="prose max-w-none">
-                        <p className="text-xl text-muted-foreground leading-relaxed font-light">
-                            {locale === "en"
-                                ? siteConfig.profile.differentiator.en
-                                : siteConfig.profile.differentiator.es}
-                        </p>
+                    <div className="max-w-none space-y-4">
+                        {loc(siteConfig.profile.bio, locale).map((paragraph, i) => (
+                            <p
+                                key={i}
+                                className={i === 0
+                                    ? "text-lg md:text-xl text-muted-foreground leading-relaxed font-light"
+                                    : "text-base md:text-lg text-muted-foreground leading-relaxed font-light"}
+                            >
+                                {paragraph}
+                            </p>
+                        ))}
 
                         <div className="mt-8 border-t border-foreground/10 pt-8">
                             <span className="text-nebula-accent font-mono text-sm uppercase tracking-wider mb-4 flex items-center gap-2 px-3 py-1 rounded-full bg-nebula-accent/10 border border-nebula-accent/20 w-fit">
@@ -83,7 +91,7 @@ export default async function AboutPage({
                                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
                                     <div>
                                         <h3 className="text-xl font-bold text-foreground font-display group-hover:text-nebula-accent transition-colors">
-                                            {exp.company}
+                                            {loc(exp.company, locale)}
                                         </h3>
                                         <div className="text-nebula-accent font-medium mt-1 flex items-center gap-2 text-sm md:text-base">
                                             <span className="h-1.5 w-1.5 rounded-full bg-nebula-accent animate-pulse" />
@@ -92,7 +100,7 @@ export default async function AboutPage({
                                     </div>
                                     <div className="flex flex-col md:items-end gap-1.5 shrink-0">
                                         <div className="px-3 py-1 text-xs font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded-full w-fit">
-                                            {exp.period}
+                                            {formatPeriod(exp.start, exp.end, locale)}
                                         </div>
                                         <span className="text-xs text-muted font-mono">
                                             {locale === "en" ? exp.location.en : exp.location.es}
@@ -130,7 +138,32 @@ export default async function AboutPage({
                         </Card>
                     ))}
                 </div>
+
+                {/* Education */}
+                <div className="flex items-center gap-3 mt-16 mb-8">
+                    <div className="p-2 rounded-lg bg-foreground/5 border border-foreground/10 text-nebula-accent">
+                        <GraduationCap size={20} />
+                    </div>
+                    <h2 className="text-2xl font-bold text-foreground font-display">
+                        {t("education")}
+                    </h2>
+                </div>
+                <Card className="bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                        <div>
+                            <h3 className="text-lg font-bold text-foreground font-display">
+                                {loc(siteConfig.profile.education.degree, locale)}
+                            </h3>
+                            <p className="text-sm text-muted mt-1">{siteConfig.profile.education.school}</p>
+                        </div>
+                        <div className="px-3 py-1 text-xs font-mono text-muted-foreground bg-foreground/5 border border-foreground/10 rounded-full w-fit">
+                            {siteConfig.profile.education.period}
+                        </div>
+                    </div>
+                </Card>
             </div>
+
+            <JsonLd data={breadcrumbJsonLd(asLocale(locale), [{ name: locale === "es" ? "Sobre mí" : "About", path: "/about" }])} />
         </div>
     );
 }

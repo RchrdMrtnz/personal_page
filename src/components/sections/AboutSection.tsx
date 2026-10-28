@@ -8,7 +8,7 @@ import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function AboutSection({ locale }: { locale: string }) {
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 md:py-20 relative overflow-hidden">
             <NebulaBackground />
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -18,7 +18,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    <Card className="bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 p-8 md:p-12 relative overflow-hidden">
+                    <Card className="bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 p-6 sm:p-8 md:p-12 relative overflow-hidden">
                         {/* Decorative glow inside card */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/5 rounded-full blur-3xl -z-10" />
 
@@ -26,6 +26,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
                                 className="inline-flex p-3 rounded-2xl bg-foreground/5 border border-foreground/10 text-nebula-accent mb-6 shadow-lg shadow-nebula-accent/10"
                             >
@@ -35,6 +36,7 @@ export default function AboutSection({ locale }: { locale: string }) {
                             <motion.h2
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
                                 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-display"
                             >
@@ -44,15 +46,17 @@ export default function AboutSection({ locale }: { locale: string }) {
                             <motion.p
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: 0.4 }}
-                                className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-3xl"
+                                className="text-base md:text-lg text-muted-foreground mb-8 md:mb-10 leading-relaxed max-w-3xl"
                             >
-                                {locale === "en" ? siteConfig.profile.differentiator.en : siteConfig.profile.differentiator.es}
+                                {locale === "en" ? siteConfig.profile.aboutBlurb.en : siteConfig.profile.aboutBlurb.es}
                             </motion.p>
 
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: 0.5 }}
                                 className="w-full border-t border-foreground/10 pt-8"
                             >

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -18,27 +18,28 @@ export function useTheme() {
     return useContext(ThemeContext);
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<Theme>("light");
+// The `.dark` class on <html> (set before paint by the no-flash script in the
+// layout) is the single source of truth; React just subscribes to it.
+function subscribe(onChange: () => void) {
+    const observer = new MutationObserver(onChange);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+}
 
-    useEffect(() => {
-        const stored = localStorage.getItem("theme") as Theme | null;
-        if (stored === "dark" || stored === "light") {
-            setTheme(stored);
-        }
-    }, []);
+const getSnapshot = (): Theme =>
+    document.documentElement.classList.contains("dark") ? "dark" : "light";
+
+const getServerSnapshot = (): Theme => "light";
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+    const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
     const toggleTheme = () => {
-        setTheme((prev) => {
-            const next = prev === "light" ? "dark" : "light";
+        const next = theme === "light" ? "dark" : "light";
+        try {
             localStorage.setItem("theme", next);
-            if (next === "dark") {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-            return next;
-        });
+        } catch {}
+        document.documentElement.classList.toggle("dark", next === "dark");
     };
 
     return (

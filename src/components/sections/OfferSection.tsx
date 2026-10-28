@@ -2,10 +2,10 @@
 
 import { siteConfig } from "../../../content/site";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import { buttonStyles } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Link } from "@/i18n/routing";
-import { ArrowRight, CheckCheck, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCheck, FileText, ShieldCheck, Users } from "lucide-react";
 import { NebulaBackground } from "@/components/ui/NebulaBackground";
 
 export default function OfferSection({ locale }: { locale: string }) {
@@ -14,7 +14,7 @@ export default function OfferSection({ locale }: { locale: string }) {
     const trust = siteConfig.trust;
 
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 md:py-20 relative overflow-hidden">
             <NebulaBackground />
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -25,12 +25,13 @@ export default function OfferSection({ locale }: { locale: string }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-12 md:mb-16"
                 >
-                    <Card className="bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl overflow-hidden relative border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.10)]">
+                    {/* p-0: the inner grid owns the padding (Card's default p-6 was doubling it on mobile) */}
+                    <Card className="p-0 bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl overflow-hidden relative border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.10)]">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8 md:p-12 relative z-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-6 sm:p-8 md:p-12 relative z-10">
                             <div>
                                 <h3 className="text-2xl font-bold text-foreground mb-4 font-display">
                                     {locale === "en" ? offer.title.en : offer.title.es}
@@ -45,22 +46,26 @@ export default function OfferSection({ locale }: { locale: string }) {
                                     </span>
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-4 border-l border-foreground/10 pl-0 md:pl-8 md:border-l-2">
+                            <div className="flex flex-col gap-4 border-t border-foreground/10 pt-8 md:border-t-0 md:pt-0 md:border-l-2 md:pl-8">
                                 <h4 className="text-xl font-bold text-foreground font-display">
-                                    {locale === "en" ? "Ready to scale your operations?" : "¿Listo para escalar sus operaciones?"}
+                                    {locale === "en" ? "Ready to scale your operations?" : "¿Listo para escalar tus operaciones?"}
                                 </h4>
                                 <p className="text-sm text-muted mb-2">
-                                    {locale === "en" ? "Let's discuss how AI can transform your business." : "Hablemos de cómo la IA puede transformar su negocio."}
+                                    {locale === "en" ? "Let's discuss how AI can transform your business." : "Hablemos de cómo la IA puede transformar tu negocio."}
                                 </p>
-                                <Link href="/contact">
-                                    <Button size="lg" className="w-full group relative overflow-hidden border-none text-white shadow-lg shadow-nebula-accent/20 hover:shadow-nebula-accent/40 transition-shadow duration-300">
-                                        <span className="absolute inset-0 bg-linear-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
-                                        <span className="absolute inset-0 bg-nebula-accent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
-                                        <span className="relative z-10 flex items-center justify-center">
-                                            {locale === "en" ? siteConfig.consulting.cta.en : siteConfig.consulting.cta.es}
-                                            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                        </span>
-                                    </Button>
+                                <Link
+                                    href="/services"
+                                    className={buttonStyles({
+                                        size: "lg",
+                                        className: "w-full text-base sm:text-lg group relative overflow-hidden border-none text-white shadow-lg shadow-nebula-accent/20 hover:shadow-nebula-accent/40 transition-shadow duration-300",
+                                    })}
+                                >
+                                    <span className="absolute inset-0 bg-linear-to-r from-nebula-accent to-purple-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                                    <span className="absolute inset-0 bg-nebula-accent opacity-100 group-hover:opacity-0 transition-opacity duration-300" />
+                                    <span className="relative z-10 flex items-center justify-center">
+                                        {locale === "en" ? siteConfig.consulting.cta.en : siteConfig.consulting.cta.es}
+                                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </span>
                                 </Link>
                             </div>
                         </div>
@@ -70,9 +75,9 @@ export default function OfferSection({ locale }: { locale: string }) {
                 {/* Trust Signals */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     {[
-                        { key: 'documentation', text: trust.documentation },
-                        { key: 'maintainability', text: trust.maintainability },
-                        { key: 'handoff', text: trust.handoff }
+                        { key: 'documentation', text: trust.documentation, icon: FileText },
+                        { key: 'maintainability', text: trust.maintainability, icon: ShieldCheck },
+                        { key: 'handoff', text: trust.handoff, icon: Users }
                     ].map((item, index) => (
                         <motion.div
                             key={item.key}
@@ -83,7 +88,7 @@ export default function OfferSection({ locale }: { locale: string }) {
                             className="flex flex-col items-center group"
                         >
                             <div className="w-12 h-12 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center text-muted mb-4 group-hover:text-nebula-accent group-hover:border-nebula-accent/50 transition-colors">
-                                <ShieldCheck size={20} />
+                                <item.icon size={20} />
                             </div>
                             <p className="text-sm text-muted group-hover:text-muted-foreground transition-colors">
                                 {locale === "en" ? item.text.en : item.text.es}

@@ -4,10 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "../../../content/site";
 import { Card } from "@/components/ui/Card";
-import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 export function ProjectsCarousel({ locale }: { locale: string }) {
     const t = useTranslations("Sections");
+    const tCase = useTranslations("CaseStudy");
     const projects = siteConfig.caseStudies;
     const scrollerRef = useRef<HTMLDivElement>(null);
     const [active, setActive] = useState(0);
@@ -43,9 +45,10 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
 
     // Auto-advance: paused on hover/focus, respects reduced-motion, loops, and the
     // timer resets whenever `active` changes (so manual nav doesn't trigger an instant jump).
+    // Off on touch screens: there is no hover to pause it, so slides would swap mid-read.
     useEffect(() => {
         if (paused) return;
-        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce), (hover: none)").matches) return;
         const id = setTimeout(() => {
             scrollTo(active >= projects.length - 1 ? 0 : active + 1);
         }, AUTOPLAY_MS);
@@ -111,7 +114,7 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
                         <Card className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 p-0 overflow-hidden group">
                             <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
                                 {/* Left: Identity panel */}
-                                <div className="lg:col-span-4 bg-linear-to-br from-nebula-primary/10 to-foreground/5 p-8 border-b lg:border-b-0 lg:border-r border-foreground/10 relative overflow-hidden flex flex-col">
+                                <div className="lg:col-span-4 bg-linear-to-br from-nebula-primary/10 to-foreground/5 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-foreground/10 relative overflow-hidden flex flex-col">
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-nebula-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
 
                                     <div className="relative z-10">
@@ -148,7 +151,7 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
                                 </div>
 
                                 {/* Right: Content */}
-                                <div className="lg:col-span-8 p-8 md:p-10 flex flex-col gap-7">
+                                <div className="lg:col-span-8 p-6 sm:p-8 md:p-10 flex flex-col gap-6 sm:gap-7">
                                     <div>
                                         <div className="text-xs uppercase tracking-widest text-muted font-mono mb-2">
                                             {t("overview")}
@@ -179,6 +182,14 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
                                             </span>
                                         ))}
                                     </div>
+
+                                    <Link
+                                        href={`/work/${project.id}`}
+                                        className="group/link inline-flex items-center self-start py-2 -my-2 text-sm font-medium text-nebula-accent hover:text-foreground transition-colors"
+                                    >
+                                        {tCase("viewCase")}
+                                        <ArrowRight className="ml-1.5 w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                                    </Link>
                                 </div>
                             </div>
                         </Card>
@@ -186,8 +197,8 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
                 ))}
             </div>
 
-            {/* Dots */}
-            <div className="flex justify-center items-center gap-2 mt-8">
+            {/* Dots — the button is the (larger) tap target, the span is the visual dot */}
+            <div className="flex justify-center items-center mt-6">
                 {projects.map((_, i) => (
                     <button
                         key={i}
@@ -195,12 +206,16 @@ export function ProjectsCarousel({ locale }: { locale: string }) {
                         onClick={() => scrollTo(i)}
                         aria-label={`${locale === "en" ? "Go to project" : "Ir al proyecto"} ${i + 1}`}
                         aria-current={active === i}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                            active === i
-                                ? "w-8 bg-nebula-accent"
-                                : "w-2 bg-foreground/20 hover:bg-foreground/40"
-                        }`}
-                    />
+                        className="group flex h-10 items-center px-1.5"
+                    >
+                        <span
+                            className={`block h-2 rounded-full transition-all duration-300 ${
+                                active === i
+                                    ? "w-8 bg-nebula-accent"
+                                    : "w-2 bg-foreground/20 group-hover:bg-foreground/40"
+                            }`}
+                        />
+                    </button>
                 ))}
             </div>
         </div>

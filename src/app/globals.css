@@ -64,6 +64,9 @@
 
   /* Animations */
   --animate-blink: blink 1s step-end infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-drift-a: drift-a 20s linear infinite;
+  --animate-drift-b: drift-b 25s linear infinite;
 
   @keyframes blink {
     0%,
@@ -72,6 +75,31 @@
     }
     50% {
       opacity: 0;
+    }
+  }
+
+  /* Pure CSS (no JS needed) so above-the-fold text paints before hydration */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Ambient orbs — compositor-only transforms, cheap on mobile */
+  @keyframes drift-a {
+    50% {
+      transform: translate(100px, -100px);
+    }
+  }
+
+  @keyframes drift-b {
+    50% {
+      transform: translate(-80px, 80px);
     }
   }
 }
@@ -113,11 +141,87 @@ body {
   }
 }
 
-/* Utilities */
-.glass-panel {
-  background: rgba(var(--foreground), 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+/* Blog article body (rendered markdown) */
+.prose-blog {
+  color: var(--muted-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.prose-blog > * + * {
+  margin-top: 1.25em;
+}
+.prose-blog h2,
+.prose-blog h3 {
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.prose-blog h2 {
+  font-size: 1.6rem;
+  margin-top: 2.2em;
+}
+.prose-blog h3 {
+  font-size: 1.25rem;
+  margin-top: 1.8em;
+}
+.prose-blog a {
+  color: var(--nebula-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog strong {
+  color: var(--foreground);
+}
+.prose-blog ul,
+.prose-blog ol {
+  padding-left: 1.4em;
+}
+.prose-blog ul {
+  list-style: disc;
+}
+.prose-blog ol {
+  list-style: decimal;
+}
+.prose-blog li + li {
+  margin-top: 0.4em;
+}
+.prose-blog li::marker {
+  color: var(--nebula-accent);
+}
+.prose-blog blockquote {
+  border-left: 2px solid var(--nebula-accent);
+  padding-left: 1em;
+  font-style: italic;
+}
+.prose-blog code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+}
+.prose-blog pre {
+  background: var(--nebula-ink);
+  color: #e5e7eb;
+  border-radius: 14px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.prose-blog pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.prose-blog hr {
+  border-color: var(--border);
+  margin: 2.5em 0;
+}
+.prose-blog img {
+  border-radius: 14px;
+  max-width: 100%;
 }
 
 /* Hide scrollbar while keeping scroll (used by the projects carousel) */
@@ -136,7 +240,8 @@ body {
   --react-international-phone-border-color: var(--border);
   --react-international-phone-background-color: transparent;
   --react-international-phone-text-color: var(--foreground);
-  --react-international-phone-font-size: 0.95rem;
+  /* >= 16px, otherwise iOS Safari zooms the page when the field is focused */
+  --react-international-phone-font-size: 1rem;
   --react-international-phone-country-selector-background-color: transparent;
   --react-international-phone-country-selector-background-color-hover: color-mix(in srgb, var(--foreground) 6%, transparent);
   --react-international-phone-dropdown-item-background-color: var(--surface);

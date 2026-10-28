@@ -22,11 +22,11 @@ export default function Outcomes({ locale }: { locale: string }) {
     };
 
     return (
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-14 md:py-20 relative overflow-hidden">
             <NebulaBackground />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function Outcomes({ locale }: { locale: string }) {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                    className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
                 >
                     {siteConfig.metrics.map((metric) => (
                         <motion.div
@@ -56,15 +56,15 @@ export default function Outcomes({ locale }: { locale: string }) {
                         >
                             <Card
                                 hoverEffect
-                                className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] flex flex-col items-center justify-center p-8 text-center"
+                                className="h-full bg-surface/60 dark:bg-nebula-ink/30 backdrop-blur-xl border-foreground/10 hover:border-nebula-accent/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] flex flex-col items-center justify-center p-4 sm:p-8 text-center"
                             >
-                                <div className="text-4xl md:text-5xl font-bold text-nebula-accent mb-3 font-display">
+                                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-nebula-accent mb-2 sm:mb-3 font-display">
                                     <AnimatedCounter value={metric.value} />
                                 </div>
-                                <h3 className="text-lg font-semibold text-foreground mb-2">
+                                <h3 className="text-sm sm:text-lg font-semibold text-foreground leading-snug mb-1.5 sm:mb-2">
                                     {locale === "en" ? metric.label.en : metric.label.es}
                                 </h3>
-                                <p className="text-sm text-muted">
+                                <p className="text-xs sm:text-sm text-muted">
                                     {locale === "en" ? metric.detail.en : metric.detail.es}
                                 </p>
                             </Card>

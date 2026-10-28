@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { headers } from "next/headers";
 import { siteConfig } from "../../../../content/site";
 import { Card } from "@/components/ui/Card";
@@ -23,6 +23,7 @@ export default async function ContactPage({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations("Contact");
 
     // Detect the visitor's country from Vercel's geo header (falls back to US locally / elsewhere).

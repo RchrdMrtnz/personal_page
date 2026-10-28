@@ -1,50 +1,24 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 interface NebulaBackgroundProps {
     className?: string; // Allow absolute positioning overrides if needed
 }
 
+/**
+ * Ambient glow orbs behind a section.
+ *
+ * No grid here on purpose: the only grid is the global fixed one in the layout.
+ * A second, per-section grid (different cell size, restarting at every section
+ * edge) is what produced the stray rectangles. The vertical mask fades the orbs
+ * out before the section edges so the overflow clip never shows a hard line.
+ */
 export function NebulaBackground({ className = "absolute inset-0" }: NebulaBackgroundProps) {
     return (
-        <div className={`${className} -z-10 overflow-hidden pointer-events-none`}>
-            {/* Grid Pattern */}
-            <div
-                className="absolute inset-0"
-                style={{
-                    backgroundImage: "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
-                    backgroundSize: "64px 64px",
-                    maskImage: "radial-gradient(ellipse at center, black 50%, transparent 100%)",
-                    WebkitMaskImage: "radial-gradient(ellipse at center, black 50%, transparent 100%)"
-                }}
-            />
-
+        <div
+            aria-hidden="true"
+            className={`${className} -z-10 overflow-hidden pointer-events-none mask-[linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]`}
+        >
             {/* Floating Orbs */}
-            <motion.div
-                animate={{
-                    x: [0, 100, 0],
-                    y: [0, -100, 0],
-                }}
-                transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-                className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-nebula-accent/5 dark:bg-nebula-accent/10 blur-3xl rounded-full"
-            />
-            <motion.div
-                animate={{
-                    x: [0, -80, 0],
-                    y: [0, 80, 0],
-                }}
-                transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-                className="absolute bottom-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full"
-            />
+            <div className="absolute top-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-nebula-accent/5 dark:bg-nebula-accent/10 blur-3xl rounded-full animate-drift-a" />
+            <div className="absolute bottom-1/4 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-purple-500/5 dark:bg-purple-500/10 blur-3xl rounded-full animate-drift-b" />
         </div>
     );
 }

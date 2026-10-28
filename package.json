@@ -12,6 +12,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.555.0",
+    "marked": "18.0.14",
     "next": "^16.0.10",
     "next-intl": "^4.5.7",
     "react": "^19.2.3",
